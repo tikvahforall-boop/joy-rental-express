@@ -1,0 +1,1003 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── ENUMS ──────────────────────────────────────────────
+
+enum UserRole {
+  RENTER
+  HOST
+  ADMIN
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum VehicleStatus {
+  DRAFT
+  PENDING_APPROVAL
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  SUSPENDED
+}
+
+enum FuelType {
+  GASOLINE
+  DIESEL
+  ELECTRIC
+  HYBRID
+  PLUG_IN_HYBRID
+}
+
+enum Transmission {
+  AUTOMATIC
+  MANUAL
+}
+
+enum Drivetrain {
+  FWD
+  RWD
+  AWD
+  FOUR_WD
+}
+
+enum BookingStatus {
+  DRAFT
+  PENDING_PAYMENT
+  PENDING_APPROVAL
+  CONFIRMED
+  DECLINED
+  CANCELLED_BY_RENTER
+  CANCELLED_BY_HOST
+  PAYMENT_FAILED
+  PICKUP_READY
+  IN_PROGRESS
+  RETURN_PENDING
+  COMPLETED
+  DISPUTED
+  CLOSED
+}
+
+enum BookingMode {
+  INSTANT
+  REQUEST
+}
+
+enum PaymentStatus {
+  PENDING
+  AUTHORIZED
+  CAPTURED
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+  DISPUTED
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum ClaimStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  AWAITING_INFO
+  APPROVED
+  DENIED
+  PAID
+  CLOSED
+}
+
+enum InsurancePolicyStatus {
+  QUOTED
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  CLAIM_FILED
+}
+
+enum NotificationType {
+  EMAIL
+  SMS
+  IN_APP
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_ON_USER
+  RESOLVED
+  CLOSED
+}
+
+// ─── USERS & AUTH ───────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  passwordHash  String?
+  name          String?
+  firstName     String?
+  lastName      String?
+  phone         String?
+  avatarUrl     String?
+  dateOfBirth   DateTime?
+  role          UserRole  @default(RENTER)
+  isActive      Boolean   @default(true)
+  isBanned      Boolean   @default(false)
+  banReason     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+
+  hostProfile   HostProfile?
+  renterProfile RenterProfile?
+
+  identityVerification   IdentityVerification?
+  driverLicenseVerification DriverLicenseVerification?
+
+  vehicles       Vehicle[]
+  bookingsAsRenter Booking[]    @relation("RenterBookings")
+  bookingsAsHost   Booking[]    @relation("HostBookings")
+  payments       Payment[]
+  reviewsGiven   Review[]     @relation("ReviewAuthor")
+  reviewsReceived Review[]    @relation("ReviewSubject")
+  messagesSent   Message[]    @relation("MessageSender")
+  messagesReceived Message[]  @relation("MessageReceiver")
+  notifications  Notification[]
+  supportTickets SupportTicket[]
+  favorites      Favorite[]
+  auditLogs      AuditLog[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─── PROFILES ───────────────────────────────────────────
+
+model RenterProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  savedLocations  Json?
+  savedPaymentIds Json?
+  tripsCompleted  Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model HostProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  businessName      String?
+  businessType      String?  // individual | business
+  bio               String?  @db.Text
+  stripeAccountId   String?
+  stripeOnboarded   Boolean  @default(false)
+  responseRate      Float?
+  responseTime      Int?     // minutes
+  superHost         Boolean  @default(false)
+  totalEarnings     Float    @default(0)
+  totalVehicles     Int      @default(0)
+  totalTrips        Int      @default(0)
+  avgRating         Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model IdentityVerification {
+  id           String             @id @default(cuid())
+  userId       String             @unique
+  documentType String?
+  documentUrl  String?
+  selfieUrl    String?
+  status       VerificationStatus @default(PENDING)
+  reviewedBy   String?
+  reviewedAt   DateTime?
+  rejectionReason String?
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DriverLicenseVerification {
+  id              String             @id @default(cuid())
+  userId          String             @unique
+  licenseNumber   String?
+  licenseState    String?
+  licenseCountry  String?
+  frontImageUrl   String?
+  backImageUrl    String?
+  expirationDate  DateTime?
+  status          VerificationStatus @default(PENDING)
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  rejectionReason String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── VEHICLES ───────────────────────────────────────────
+
+model Vehicle {
+  id              String        @id @default(cuid())
+  hostId          String
+  slug            String        @unique
+  status          VehicleStatus @default(DRAFT)
+
+  // Basic info
+  make            String
+  model           String
+  year            Int
+  trim            String?
+  vin             String?
+  licensePlate    String?
+  color           String?
+  category        String        // economy, suv, luxury, electric, sports, van, truck, family
+  description     String?       @db.Text
+
+  // Specs
+  seats           Int           @default(5)
+  doors           Int           @default(4)
+  fuelType        FuelType      @default(GASOLINE)
+  transmission    Transmission  @default(AUTOMATIC)
+  drivetrain      Drivetrain?
+  mileage         Int?
+  electricRange   Int?          // miles
+  cargoSpace      String?
+
+  // Location
+  address         String?
+  city            String?
+  state           String?
+  zipCode         String?
+  country         String        @default("US")
+  latitude        Float?
+  longitude       Float?
+
+  // Pricing
+  dailyPrice      Float
+  weeklyDiscount  Float?        // percentage
+  monthlyDiscount Float?        // percentage
+  hourlyPrice     Float?
+  cleaningFee     Float?
+  deliveryFee     Float?
+  airportFee      Float?
+
+  // Mileage
+  dailyMileageLimit Int?        // miles per day
+  extraMileCharge   Float?      // per mile
+
+  // Policies
+  fuelPolicy      String?       // full-to-full, same-level, prepaid
+  bookingMode     BookingMode   @default(REQUEST)
+  minTripDays     Int           @default(1)
+  maxTripDays     Int           @default(30)
+  instantBookEligible Boolean   @default(false)
+  deliveryEnabled Boolean       @default(false)
+  deliveryRadius  Int?          // miles
+
+  // Stats
+  totalTrips      Int           @default(0)
+  avgRating       Float?
+  totalReviews    Int           @default(0)
+
+  // Admin
+  approvedBy      String?
+  approvedAt      DateTime?
+  suspendedReason String?
+
+  // Company-owned flag for hybrid model
+  isCompanyOwned  Boolean       @default(false)
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  host            User          @relation(fields: [hostId], references: [id])
+  images          VehicleImage[]
+  documents       VehicleDocument[]
+  features        VehicleFeature[]
+  availability    VehicleAvailability[]
+  pricingRules    VehiclePricingRule[]
+  addOns          AddOn[]
+  bookings        Booking[]
+  reviews         Review[]
+  favorites       Favorite[]
+  maintenanceRecords MaintenanceRecord[]
+  damageReports   VehicleDamageReport[]
+  deliveryZones   DeliveryZone[]
+
+  @@index([hostId])
+  @@index([status])
+  @@index([city, state])
+  @@index([category])
+  @@index([make, model])
+  @@index([dailyPrice])
+  @@index([latitude, longitude])
+}
+
+model VehicleImage {
+  id        String   @id @default(cuid())
+  vehicleId String
+  url       String
+  caption   String?
+  position  Int      @default(0) // ordering
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId])
+}
+
+model VehicleDocument {
+  id           String   @id @default(cuid())
+  vehicleId    String
+  type         String   // registration, insurance, inspection, ownership
+  name         String
+  url          String
+  expiresAt    DateTime?
+  createdAt    DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model VehicleFeature {
+  id        String @id @default(cuid())
+  vehicleId String
+  name      String // gps, apple_carplay, android_auto, child_seat, pet_friendly, etc.
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@unique([vehicleId, name])
+}
+
+model VehicleAvailability {
+  id          String   @id @default(cuid())
+  vehicleId   String
+  startDate   DateTime
+  endDate     DateTime
+  isBlocked   Boolean  @default(false) // true = blackout date
+  reason      String?
+  createdAt   DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId, startDate, endDate])
+}
+
+model VehiclePricingRule {
+  id         String   @id @default(cuid())
+  vehicleId  String
+  name       String   // seasonal, weekend, holiday, last_minute, early_booking
+  type       String   // percentage_discount, percentage_increase, fixed_amount
+  value      Float
+  startDate  DateTime?
+  endDate    DateTime?
+  daysOfWeek Json?    // [0,6] for weekends
+  minDays    Int?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model DeliveryZone {
+  id         String @id @default(cuid())
+  vehicleId  String
+  name       String
+  radiusMiles Float
+  fee        Float
+  createdAt  DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model AddOn {
+  id          String @id @default(cuid())
+  vehicleId   String
+  name        String   // child_seat, gps, bike_rack, snow_tires, additional_driver
+  description String?
+  pricePerDay Float
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+// ─── BOOKINGS ───────────────────────────────────────────
+
+model Booking {
+  id               String        @id @default(cuid())
+  bookingRef       String        @unique
+  vehicleId        String
+  renterId         String
+  hostId           String
+  status           BookingStatus @default(DRAFT)
+
+  // Trip dates
+  pickupDate       DateTime
+  returnDate       DateTime
+  actualPickupDate DateTime?
+  actualReturnDate DateTime?
+
+  // Pickup
+  pickupType       String        @default("pickup") // pickup, delivery
+  pickupAddress    String?
+  pickupLatitude   Float?
+  pickupLongitude  Float?
+  pickupInstructions String?     @db.Text
+
+  // Price breakdown stored at booking time
+  dailyRate        Float
+  numDays          Int
+  subtotal         Float
+  discountAmount   Float         @default(0)
+  deliveryFee      Float         @default(0)
+  cleaningFee      Float         @default(0)
+  airportFee       Float         @default(0)
+  youngDriverFee   Float         @default(0)
+  additionalDriverFee Float      @default(0)
+  mileageFee       Float         @default(0)
+  addOnTotal       Float         @default(0)
+  insuranceFee     Float         @default(0)
+  serviceFee       Float         @default(0)
+  taxAmount        Float         @default(0)
+  depositAmount    Float         @default(0)
+  totalPrice       Float
+
+  // Host earnings
+  hostEarnings     Float         @default(0)
+  platformFee      Float         @default(0)
+  platformFeeRate  Float         @default(0)
+
+  // Promo
+  promoCodeId      String?
+  promoDiscount    Float         @default(0)
+
+  // Insurance
+  insuranceQuoteId String?
+  insurancePolicyId String?
+
+  // Rental agreement
+  rentalAgreementUrl String?
+  agreementAcceptedAt DateTime?
+
+  // Cancellation
+  cancelledAt      DateTime?
+  cancelledBy      String?
+  cancellationReason String?
+  cancellationFee  Float         @default(0)
+
+  // Extension
+  originalReturnDate DateTime?
+  extensionApproved Boolean?
+
+  // Notes
+  hostNotes        String?       @db.Text
+  renterNotes      String?       @db.Text
+
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  vehicle          Vehicle       @relation(fields: [vehicleId], references: [id])
+  renter           User          @relation("RenterBookings", fields: [renterId], references: [id])
+  host             User          @relation("HostBookings", fields: [hostId], references: [id])
+  promoCode        PromoCode?    @relation(fields: [promoCodeId], references: [id])
+
+  payments         Payment[]
+  statusHistory    BookingStatusHistory[]
+  priceBreakdown   BookingPriceBreakdown[]
+  addOnSelections  BookingAddOn[]
+  checkInOutReports CheckInOutReport[]
+  damageReports    VehicleDamageReport[]
+  reviews          Review[]
+  messages         MessageThread[]
+  insuranceQuote   InsuranceQuote?   @relation(fields: [insuranceQuoteId], references: [id])
+  insurancePolicy  InsurancePolicy?  @relation(fields: [insurancePolicyId], references: [id])
+
+  @@index([renterId])
+  @@index([hostId])
+  @@index([vehicleId])
+  @@index([status])
+  @@index([pickupDate, returnDate])
+  @@index([bookingRef])
+}
+
+model BookingStatusHistory {
+  id        String        @id @default(cuid())
+  bookingId String
+  status    BookingStatus
+  note      String?
+  changedBy String?
+  createdAt DateTime      @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model BookingPriceBreakdown {
+  id        String  @id @default(cuid())
+  bookingId String
+  label     String
+  type      String  // base, fee, tax, discount, insurance, addon, deposit
+  amount    Float
+  quantity  Int     @default(1)
+  total     Float
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+model BookingAddOn {
+  id          String @id @default(cuid())
+  bookingId   String
+  addOnId     String?
+  name        String
+  pricePerDay Float
+  numDays     Int
+  total       Float
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+}
+
+// ─── PAYMENTS ───────────────────────────────────────────
+
+model Payment {
+  id                  String        @id @default(cuid())
+  bookingId           String
+  userId              String
+  stripePaymentIntentId String?     @unique
+  stripeChargeId      String?
+  amount              Float
+  currency            String        @default("usd")
+  status              PaymentStatus @default(PENDING)
+  type                String        // booking, deposit, cancellation_fee, damage, refund
+  description         String?
+  failureReason       String?
+  idempotencyKey      String?       @unique
+  metadata            Json?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  booking  Booking  @relation(fields: [bookingId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+  refunds  Refund[]
+
+  @@index([bookingId])
+  @@index([userId])
+  @@index([stripePaymentIntentId])
+}
+
+model Refund {
+  id              String   @id @default(cuid())
+  paymentId       String
+  stripeRefundId  String?  @unique
+  amount          Float
+  reason          String?
+  status          String   @default("pending") // pending, succeeded, failed
+  processedBy     String?
+  createdAt       DateTime @default(now())
+
+  payment Payment @relation(fields: [paymentId], references: [id])
+}
+
+model DepositAuthorization {
+  id                String   @id @default(cuid())
+  bookingId         String
+  stripePaymentIntentId String?
+  amount            Float
+  status            String   @default("authorized") // authorized, captured, released, expired
+  authorizedAt      DateTime @default(now())
+  capturedAt        DateTime?
+  releasedAt        DateTime?
+
+  @@index([bookingId])
+}
+
+model Payout {
+  id              String      @id @default(cuid())
+  hostId          String
+  bookingId       String?
+  stripeTransferId String?    @unique
+  amount          Float
+  currency        String      @default("usd")
+  status          PayoutStatus @default(PENDING)
+  scheduledDate   DateTime?
+  processedAt     DateTime?
+  failureReason   String?
+  createdAt       DateTime    @default(now())
+
+  @@index([hostId])
+}
+
+model PromoCode {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  description String?
+  type        String    // percentage, fixed
+  value       Float
+  minBookingAmount Float?
+  maxDiscount Float?
+  usageLimit  Int?
+  usedCount   Int       @default(0)
+  validFrom   DateTime
+  validUntil  DateTime
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+
+  bookings Booking[]
+
+  @@index([code])
+}
+
+model TaxRule {
+  id         String  @id @default(cuid())
+  name       String
+  state      String?
+  city       String?
+  zipCode    String?
+  rate       Float   // percentage
+  isActive   Boolean @default(true)
+  createdAt  DateTime @default(now())
+
+  @@index([state])
+}
+
+// ─── INSURANCE ──────────────────────────────────────────
+
+model InsuranceQuote {
+  id             String   @id @default(cuid())
+  providerQuoteId String?
+  bookingId      String?
+  coverageTier   String   // basic, standard, premium, premium_plus
+  premium        Float
+  deductible     Float
+  coverageDetails Json?
+  eligibilityData Json?
+  expiresAt      DateTime
+  status         String   @default("quoted") // quoted, accepted, expired, declined
+  createdAt      DateTime @default(now())
+
+  bookings Booking[]
+
+  @@index([bookingId])
+}
+
+model InsurancePolicy {
+  id               String                @id @default(cuid())
+  providerPolicyId String?
+  bookingId        String?
+  quoteId          String?
+  coverageTier     String
+  premium          Float
+  deductible       Float
+  status           InsurancePolicyStatus @default(ACTIVE)
+  policyDocUrl     String?
+  certificateUrl   String?
+  startDate        DateTime
+  endDate          DateTime
+  cancelledAt      DateTime?
+  cancellationReason String?
+  metadata         Json?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+
+  bookings Booking[]
+  claims   InsuranceClaim[]
+
+  @@index([bookingId])
+  @@index([providerPolicyId])
+}
+
+model InsuranceClaim {
+  id               String      @id @default(cuid())
+  policyId         String
+  providerClaimId  String?
+  bookingId        String?
+  status           ClaimStatus @default(SUBMITTED)
+  incidentDate     DateTime
+  incidentLocation String?
+  description      String      @db.Text
+  estimatedAmount  Float?
+  approvedAmount   Float?
+  documents        Json?       // array of document URLs
+  thirdPartyDetails Json?
+  adminNotes       String?     @db.Text
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  policy InsurancePolicy @relation(fields: [policyId], references: [id])
+
+  @@index([policyId])
+  @@index([bookingId])
+}
+
+// ─── CHECK-IN/OUT & DAMAGES ─────────────────────────────
+
+model CheckInOutReport {
+  id          String   @id @default(cuid())
+  bookingId   String
+  type        String   // check_in, check_out
+  reportedBy  String   // userId
+  odometerReading Int?
+  fuelLevel   String?  // full, three_quarter, half, quarter, empty
+  batteryLevel Int?    // percentage for EVs
+  photos      Json?    // array of photo URLs
+  existingDamage Json? // array of damage notes
+  notes       String?  @db.Text
+  signature   String?  // base64 or URL
+  latitude    Float?
+  longitude   Float?
+  createdAt   DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id])
+
+  @@index([bookingId])
+}
+
+model VehicleDamageReport {
+  id          String      @id @default(cuid())
+  vehicleId   String
+  bookingId   String?
+  reportedBy  String
+  description String      @db.Text
+  photos      Json?       // array of photo URLs
+  incidentDate DateTime?
+  location    String?
+  estimatedCost Float?
+  status      ClaimStatus @default(SUBMITTED)
+  adminNotes  String?     @db.Text
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+  booking Booking? @relation(fields: [bookingId], references: [id])
+
+  @@index([vehicleId])
+  @@index([bookingId])
+}
+
+// ─── MESSAGING ──────────────────────────────────────────
+
+model MessageThread {
+  id          String    @id @default(cuid())
+  bookingId   String?
+  subject     String?
+  isSupport   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  booking  Booking?  @relation(fields: [bookingId], references: [id])
+  messages Message[]
+
+  @@index([bookingId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  threadId  String
+  senderId  String
+  receiverId String?
+  content   String   @db.Text
+  attachments Json?  // array of attachment URLs
+  isRead    Boolean  @default(false)
+  isSystem  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  thread   MessageThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  sender   User          @relation("MessageSender", fields: [senderId], references: [id])
+  receiver User?         @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+  @@index([threadId])
+  @@index([senderId])
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType @default(IN_APP)
+  title     String
+  message   String
+  link      String?
+  isRead    Boolean          @default(false)
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+}
+
+// ─── REVIEWS ────────────────────────────────────────────
+
+model Review {
+  id          String   @id @default(cuid())
+  bookingId   String
+  vehicleId   String?
+  authorId    String
+  subjectId   String   // user being reviewed
+  type        String   // renter_to_host, host_to_renter
+  overallRating Int    // 1-5
+  cleanliness Int?
+  communication Int?
+  accuracy    Int?
+  pickupExperience Int?
+  vehicleCondition Int?
+  comment     String?  @db.Text
+  isPublished Boolean  @default(false)
+  publishAt   DateTime?
+  isModerated Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  booking Booking  @relation(fields: [bookingId], references: [id])
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+  author  User     @relation("ReviewAuthor", fields: [authorId], references: [id])
+  subject User     @relation("ReviewSubject", fields: [subjectId], references: [id])
+
+  @@unique([bookingId, authorId])
+  @@index([vehicleId])
+  @@index([subjectId])
+}
+
+// ─── SUPPORT ────────────────────────────────────────────
+
+model SupportTicket {
+  id          String       @id @default(cuid())
+  userId      String
+  bookingId   String?
+  subject     String
+  description String       @db.Text
+  status      TicketStatus @default(OPEN)
+  priority    String       @default("medium") // low, medium, high, urgent
+  category    String?
+  assignedTo  String?
+  resolution  String?      @db.Text
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+}
+
+// ─── MAINTENANCE ────────────────────────────────────────
+
+model MaintenanceRecord {
+  id          String   @id @default(cuid())
+  vehicleId   String
+  type        String   // oil_change, tire_rotation, brake_service, inspection, etc.
+  description String?
+  cost        Float?
+  performedAt DateTime
+  nextDueAt   DateTime?
+  nextDueMileage Int?
+  vendor      String?
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+
+  @@index([vehicleId])
+}
+
+// ─── FAVORITES ──────────────────────────────────────────
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  vehicleId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, vehicleId])
+}
+
+// ─── ADMIN & CONFIG ─────────────────────────────────────
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  details   Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+}
+
+model WebhookEvent {
+  id          String   @id @default(cuid())
+  provider    String   // stripe, insurance_provider
+  eventType   String
+  payload     Json
+  status      String   @default("received") // received, processed, failed
+  error       String?
+  processedAt DateTime?
+  createdAt   DateTime @default(now())
+
+  @@index([provider, eventType])
+  @@index([createdAt])
+}
+
+model AppConfiguration {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  category  String?  // fees, insurance, booking, general
+  updatedBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
