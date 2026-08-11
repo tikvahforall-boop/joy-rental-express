@@ -6,6 +6,8 @@ import {
   handleApiError,
   requireRole,
 } from "@/lib/api-utils";
+import { vehicleCreateSchema } from "@/lib/validators";
+import { slugify } from "@/lib/utils";
 
 export async function GET(request: NextRequest) {
   try {
@@ -141,6 +143,51 @@ export async function PATCH(request: NextRequest) {
     }
 
     return errorResponse("Invalid action", 400);
+  } catch (error) {
+    return handleApiError(error);
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const session = await requireRole("ADMIN");
+    const adminId = (session.user as { id: string }).id;
+    const body = await request.json();
+
+    const validated = vehicleCreateSchema.parse(body);
+    const { features, ...vehicleData } = validated;
+
+    const slug = slugify(
+      `${vehicleData.make}-${vehicleData.model}-${vehicleData.year}-${Date.now().toString(36)}`
+    );
+
+    const vehicle = await prisma.vehicle.create({
+      data: {
+        ...vehicleData,
+        slug,
+        hostId: body.hostId || adminId,
+        status: "ACTIVE",
+        isCompanyOwned: !body.hostId,
+        approvedBy: adminId,
+        approvedAt: new Date(),
+        features: features
+          ? { create: features.map((name: string) => ({ name })) }
+          : undefined,
+      },
+      include: { features: true, images: true },
+    });
+
+    await prisma.auditLog.create({
+      data: {
+        userId: adminId,
+        action: "CREATE_VEHICLE",
+        entity: "Vehicle",
+        entityId: vehicle.id,
+        details: { make: vehicle.make, model: vehicle.model },
+      },
+    });
+
+    return successResponse(vehicle, 201);
   } catch (error) {
     return handleApiError(error);
   }

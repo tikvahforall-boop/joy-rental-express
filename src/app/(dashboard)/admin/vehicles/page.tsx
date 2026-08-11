@@ -1,10 +1,22 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ShieldAlert, Eye, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import Link from "next/link";
+import {
+  ShieldAlert,
+  Eye,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Plus,
+  Pencil,
+  Trash2,
+  Search,
+} from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency } from "@/lib/utils";
@@ -19,6 +31,7 @@ interface Vehicle {
   totalTrips: number;
   avgRating: number | null;
   category: string;
+  slug: string;
   host: {
     id: string;
     name: string;
@@ -40,6 +53,18 @@ const statusOptions = [
   { value: "MAINTENANCE", label: "Maintenance" },
   { value: "SUSPENDED", label: "Suspended" },
   { value: "DRAFT", label: "Draft" },
+];
+
+const categoryOptions = [
+  { value: "", label: "All Categories" },
+  { value: "economy", label: "Economy" },
+  { value: "suv", label: "SUV" },
+  { value: "luxury", label: "Luxury" },
+  { value: "electric", label: "Electric" },
+  { value: "sports", label: "Sports" },
+  { value: "van", label: "Van" },
+  { value: "truck", label: "Truck" },
+  { value: "family", label: "Family" },
 ];
 
 const statusBadgeVariant: Record<string, "success" | "warning" | "error" | "outline" | "info"> = {
@@ -70,6 +95,8 @@ export default function AdminVehiclesPage() {
     totalPages: 0,
   });
   const [status, setStatus] = useState("");
+  const [category, setCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
 
@@ -85,13 +112,25 @@ export default function AdminVehiclesPage() {
       setLoading(true);
       const params = new URLSearchParams();
       if (status) params.set("status", status);
+      if (category) params.set("category", category);
       params.set("page", String(page));
       params.set("limit", "10");
 
       try {
         const res = await fetch(`/api/admin/vehicles?${params.toString()}`);
         const data = await res.json();
-        setVehicles(data.vehicles);
+        let filtered = data.vehicles || [];
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          filtered = filtered.filter(
+            (v: Vehicle) =>
+              v.make.toLowerCase().includes(q) ||
+              v.model.toLowerCase().includes(q) ||
+              `${v.year}`.includes(q) ||
+              v.host.name.toLowerCase().includes(q)
+          );
+        }
+        setVehicles(filtered);
         setPagination(data.pagination);
       } catch {
         setVehicles([]);
@@ -99,7 +138,7 @@ export default function AdminVehiclesPage() {
         setLoading(false);
       }
     },
-    [status]
+    [status, category, searchQuery]
   );
 
   useEffect(() => {
@@ -116,6 +155,18 @@ export default function AdminVehiclesPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: vehicleId, action }),
       });
+      await fetchVehicles(pagination.page);
+    } catch {
+    } finally {
+      setActionLoadingId(null);
+    }
+  };
+
+  const handleDelete = async (vehicleId: string) => {
+    if (!confirm("Are you sure you want to deactivate this vehicle?")) return;
+    setActionLoadingId(vehicleId);
+    try {
+      await fetch(`/api/admin/vehicles/${vehicleId}`, { method: "DELETE" });
       await fetchVehicles(pagination.page);
     } catch {
     } finally {
@@ -154,14 +205,40 @@ export default function AdminVehiclesPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Vehicle Management</h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-2xl font-bold text-gray-900">Vehicle Management</h1>
+        <Link href="/admin/vehicles/new">
+          <Button>
+            <Plus className="mr-1.5 h-4 w-4" />
+            Add Vehicle
+          </Button>
+        </Link>
+      </div>
 
-      <div className="w-full sm:w-56">
-        <Select
-          options={statusOptions}
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+        <div className="relative w-full sm:w-64">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Input
+            placeholder="Search make, model, host..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9"
+          />
+        </div>
+        <div className="w-full sm:w-44">
+          <Select
+            options={statusOptions}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+        </div>
+        <div className="w-full sm:w-44">
+          <Select
+            options={categoryOptions}
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+        </div>
       </div>
 
       <Card>
@@ -191,7 +268,7 @@ export default function AdminVehiclesPage() {
                       <td className="px-4 py-3"><Skeleton className="h-4 w-16" /></td>
                       <td className="px-4 py-3"><Skeleton className="h-4 w-10" /></td>
                       <td className="px-4 py-3"><Skeleton className="h-4 w-12" /></td>
-                      <td className="px-4 py-3"><Skeleton className="h-8 w-20" /></td>
+                      <td className="px-4 py-3"><Skeleton className="h-8 w-32" /></td>
                     </tr>
                   ))
                 ) : vehicles.length === 0 ? (
@@ -204,12 +281,12 @@ export default function AdminVehiclesPage() {
                   vehicles.map((vehicle) => (
                     <tr key={vehicle.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
-                        {vehicle.make} {vehicle.model} {vehicle.year}
+                        {vehicle.year} {vehicle.make} {vehicle.model}
                       </td>
                       <td className="px-4 py-3 text-gray-600 whitespace-nowrap">
                         {vehicle.host.name}
                       </td>
-                      <td className="px-4 py-3 text-gray-600 whitespace-nowrap">
+                      <td className="px-4 py-3 text-gray-600 whitespace-nowrap capitalize">
                         {vehicle.category}
                       </td>
                       <td className="px-4 py-3">
@@ -226,7 +303,7 @@ export default function AdminVehiclesPage() {
                       <td className="px-4 py-3">
                         {vehicle.avgRating !== null ? (
                           <div className="flex items-center gap-1 text-gray-600">
-                            <Star className="h-3.5 w-3.5 fill-neutral-400 text-neutral-400" />
+                            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
                             {vehicle.avgRating.toFixed(1)}
                           </div>
                         ) : (
@@ -234,11 +311,17 @@ export default function AdminVehiclesPage() {
                         )}
                       </td>
                       <td className="px-4 py-3">
-                        <div className="flex items-center gap-2">
-                          <Button variant="outline" size="sm">
-                            <Eye className="h-3.5 w-3.5" />
-                            View
-                          </Button>
+                        <div className="flex items-center gap-1.5">
+                          <Link href={`/admin/vehicles/${vehicle.id}`}>
+                            <Button variant="outline" size="sm">
+                              <Eye className="h-3.5 w-3.5" />
+                            </Button>
+                          </Link>
+                          <Link href={`/admin/vehicles/${vehicle.id}/edit`}>
+                            <Button variant="outline" size="sm">
+                              <Pencil className="h-3.5 w-3.5" />
+                            </Button>
+                          </Link>
                           {vehicle.status === "PENDING_APPROVAL" && (
                             <Button
                               size="sm"
@@ -250,14 +333,24 @@ export default function AdminVehiclesPage() {
                           )}
                           {vehicle.status === "ACTIVE" && (
                             <Button
-                              variant="destructive"
+                              variant="outline"
                               size="sm"
+                              className="text-red-600 hover:bg-red-50"
                               loading={actionLoadingId === vehicle.id}
                               onClick={() => handleAction(vehicle.id, "suspend")}
                             >
                               Suspend
                             </Button>
                           )}
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-gray-400 hover:text-red-600"
+                            onClick={() => handleDelete(vehicle.id)}
+                            disabled={actionLoadingId === vehicle.id}
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </Button>
                         </div>
                       </td>
                     </tr>
@@ -282,6 +375,9 @@ export default function AdminVehiclesPage() {
                   <ChevronLeft className="h-4 w-4" />
                   Previous
                 </Button>
+                <span className="text-sm text-gray-500">
+                  Page {pagination.page} of {pagination.totalPages}
+                </span>
                 <Button
                   variant="outline"
                   size="sm"
