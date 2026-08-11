@@ -101,7 +101,7 @@ export async function searchVehicles(filters: SearchFilters): Promise<SearchResu
     prisma.vehicle.count({ where }),
   ]);
 
-  const results: VehicleResult[] = vehicles.map((v) => ({
+  const results: VehicleResult[] = vehicles.map((v: typeof vehicles[number]) => ({
     id: v.id,
     slug: v.slug,
     make: v.make,
@@ -114,7 +114,7 @@ export async function searchVehicles(filters: SearchFilters): Promise<SearchResu
     seats: v.seats,
     transmission: v.transmission as VehicleResult["transmission"],
     fuelType: v.fuelType as VehicleResult["fuelType"],
-    features: v.features.map((f) => f.name),
+    features: v.features.map((f: { name: string }) => f.name),
     city: v.city ?? "",
     state: v.state ?? "",
     instantBook: v.bookingMode === "INSTANT",
@@ -147,5 +147,5 @@ export async function getAvailableMakes(): Promise<string[]> {
     distinct: ["make"],
     orderBy: { make: "asc" },
   });
-  return vehicles.map((v) => v.make);
+  return vehicles.map((v: { make: string }) => v.make);
 }

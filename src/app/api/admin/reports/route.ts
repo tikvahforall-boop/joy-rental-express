@@ -19,7 +19,7 @@ export async function GET() {
   ]);
 
   const totalBookings = bookings.length;
-  const totalRevenue = bookings.reduce((s, b) => s + b.totalPrice, 0);
+  const totalRevenue = bookings.reduce((s: number, b: { totalPrice: number }) => s + b.totalPrice, 0);
   const avgBookingValue = totalBookings > 0 ? totalRevenue / totalBookings : 0;
 
   const bookingsByStatus: Record<string, number> = {};

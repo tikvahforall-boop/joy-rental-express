@@ -126,8 +126,8 @@ export async function POST(request: NextRequest) {
     const config = await prisma.appConfiguration.findMany({
       where: { category: "fees" },
     });
-    const hostFeeConfig = config.find((c) => c.key === "host_fee_rate");
-    const renterFeeConfig = config.find((c) => c.key === "renter_fee_rate");
+    const hostFeeConfig = config.find((c: { key: string }) => c.key === "host_fee_rate");
+    const renterFeeConfig = config.find((c: { key: string }) => c.key === "renter_fee_rate");
     const hostFeeRate = hostFeeConfig
       ? (hostFeeConfig.value as number)
       : 12;
@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
       : 10;
 
     const selectedAddOns = validated.addOns
-      ? vehicle.addOns.filter((a) => validated.addOns!.includes(a.id))
+      ? vehicle.addOns.filter((a: { id: string }) => validated.addOns!.includes(a.id))
       : [];
 
     const pricing = calculatePricing({
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
       cleaningFee: vehicle.cleaningFee,
       deliveryFee: vehicle.deliveryFee,
       isDelivery: validated.pickupType === "delivery",
-      addOns: selectedAddOns.map((a) => ({
+      addOns: selectedAddOns.map((a: { pricePerDay: number; name: string }) => ({
         pricePerDay: a.pricePerDay,
         name: a.name,
       })),
@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
 
     const bookingRef = generateBookingRef();
 
-    const booking = await prisma.$transaction(async (tx) => {
+    const booking = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
       const newBooking = await tx.booking.create({
         data: {
           bookingRef,
@@ -262,7 +262,7 @@ export async function POST(request: NextRequest) {
 
       if (selectedAddOns.length > 0) {
         await tx.bookingAddOn.createMany({
-          data: selectedAddOns.map((addOn) => ({
+          data: selectedAddOns.map((addOn: { id: string; name: string; pricePerDay: number }) => ({
             bookingId: newBooking.id,
             addOnId: addOn.id,
             name: addOn.name,

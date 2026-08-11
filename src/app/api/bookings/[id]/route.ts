@@ -102,7 +102,7 @@ export async function PATCH(
         if (booking.status !== "PENDING_APPROVAL")
           return errorResponse("Booking cannot be approved in current state", 400);
 
-        const updated = await prisma.$transaction(async (tx) => {
+        const updated = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
           const b = await tx.booking.update({
             where: { id },
             data: { status: "CONFIRMED" },
@@ -121,7 +121,7 @@ export async function PATCH(
         if (booking.status !== "PENDING_APPROVAL")
           return errorResponse("Booking cannot be declined in current state", 400);
 
-        const updated = await prisma.$transaction(async (tx) => {
+        const updated = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
           const b = await tx.booking.update({
             where: { id },
             data: {
@@ -158,7 +158,7 @@ export async function PATCH(
             ? "CANCELLED_BY_RENTER"
             : "CANCELLED_BY_HOST";
 
-        const updated = await prisma.$transaction(async (tx) => {
+        const updated = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
           const b = await tx.booking.update({
             where: { id },
             data: {
@@ -185,7 +185,7 @@ export async function PATCH(
         if (booking.status !== "CONFIRMED" && booking.status !== "PICKUP_READY")
           return errorResponse("Booking must be confirmed to start trip", 400);
 
-        const updated = await prisma.$transaction(async (tx) => {
+        const updated = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
           const b = await tx.booking.update({
             where: { id },
             data: {
@@ -209,7 +209,7 @@ export async function PATCH(
         if (booking.status !== "IN_PROGRESS" && booking.status !== "RETURN_PENDING")
           return errorResponse("Trip must be in progress to complete", 400);
 
-        const updated = await prisma.$transaction(async (tx) => {
+        const updated = await prisma.$transaction(async (tx: Parameters<Parameters<typeof prisma.$transaction>[0]>[0]) => {
           const b = await tx.booking.update({
             where: { id },
             data: {

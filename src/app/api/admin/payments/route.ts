@@ -38,11 +38,11 @@ export async function GET() {
     };
   });
 
-  const totalRevenue = payments.reduce((s, p) => s + p.amount, 0);
-  const totalFees = payments.reduce((s, p) => s + p.platformFee, 0);
+  const totalRevenue = payments.reduce((s: number, p: { amount: number }) => s + p.amount, 0);
+  const totalFees = payments.reduce((s: number, p: { platformFee: number }) => s + p.platformFee, 0);
   const pendingPayouts = payments
-    .filter((p) => p.status === "COMPLETED")
-    .reduce((s, p) => s + p.hostPayout, 0);
+    .filter((p: { status: string }) => p.status === "COMPLETED")
+    .reduce((s: number, p: { hostPayout: number }) => s + p.hostPayout, 0);
 
   return NextResponse.json({
     payments,
