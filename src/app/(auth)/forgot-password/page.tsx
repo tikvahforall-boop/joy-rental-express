@@ -26,8 +26,8 @@ export default function ForgotPasswordPage() {
 
         {submitted ? (
           <div className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-              <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100">
+              <svg className="h-6 w-6 text-neutral-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -61,7 +61,7 @@ export default function ForgotPasswordPage() {
             </Button>
             <p className="text-center text-sm text-gray-500">
               Remember your password?{" "}
-              <Link href="/login" className="font-medium text-green-600 hover:text-green-500">
+              <Link href="/login" className="font-medium text-neutral-800 hover:text-neutral-500">
                 Sign in
               </Link>
             </p>

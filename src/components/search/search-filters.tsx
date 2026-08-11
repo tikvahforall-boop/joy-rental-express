@@ -94,7 +94,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
           <button
             type="button"
             onClick={clearAll}
-            className="text-sm font-medium text-green-600 hover:text-green-700"
+            className="text-sm font-medium text-neutral-800 hover:text-neutral-900"
           >
             Clear all
           </button>
@@ -109,7 +109,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
                 type="checkbox"
                 checked={getParamArray("category").includes(cat.value)}
                 onChange={() => toggleArrayParam("category", cat.value)}
-                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                className="h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
               />
               <span className="text-sm text-gray-700">
                 {cat.icon} {cat.label}
@@ -126,7 +126,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
             placeholder="Min"
             value={getParam("minPrice")}
             onChange={(e) => updateParams({ minPrice: e.target.value || null })}
-            className="h-9 w-full rounded-lg border border-gray-300 px-3 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            className="h-9 w-full rounded-lg border border-gray-300 px-3 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
             min={0}
           />
           <span className="text-gray-400">-</span>
@@ -135,7 +135,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
             placeholder="Max"
             value={getParam("maxPrice")}
             onChange={(e) => updateParams({ maxPrice: e.target.value || null })}
-            className="h-9 w-full rounded-lg border border-gray-300 px-3 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            className="h-9 w-full rounded-lg border border-gray-300 px-3 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
             min={0}
           />
         </div>
@@ -149,7 +149,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
                 type="checkbox"
                 checked={getParamArray("make").includes(make)}
                 onChange={() => toggleArrayParam("make", make)}
-                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                className="h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
               />
               <span className="text-sm text-gray-700">{make}</span>
             </label>
@@ -165,7 +165,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
                 type="checkbox"
                 checked={getParamArray("transmission").includes(t.value)}
                 onChange={() => toggleArrayParam("transmission", t.value)}
-                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                className="h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
               />
               <span className="text-sm text-gray-700">{t.label}</span>
             </label>
@@ -181,7 +181,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
                 type="checkbox"
                 checked={getParamArray("fuelType").includes(f.value)}
                 onChange={() => toggleArrayParam("fuelType", f.value)}
-                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                className="h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
               />
               <span className="text-sm text-gray-700">{f.label}</span>
             </label>
@@ -203,7 +203,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
               className={cn(
                 "rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors",
                 getParam("minSeats") === s.value
-                  ? "border-green-600 bg-green-50 text-green-700"
+                  ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                   : "border-gray-300 text-gray-600 hover:border-gray-400"
               )}
             >
@@ -221,7 +221,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
                 type="checkbox"
                 checked={getParamArray("features").includes(feature)}
                 onChange={() => toggleArrayParam("features", feature)}
-                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                className="h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
               />
               <span className="text-sm text-gray-700">{feature}</span>
             </label>
@@ -266,7 +266,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
               className={cn(
                 "rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors",
                 getParam("minRating") === r.value
-                  ? "border-green-600 bg-green-50 text-green-700"
+                  ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                   : "border-gray-300 text-gray-600 hover:border-gray-400"
               )}
             >
@@ -288,7 +288,7 @@ export function SearchFilters({ makes }: { makes: string[] }) {
         <SlidersHorizontal className="h-4 w-4" />
         Filters
         {hasFilters && (
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-600 text-xs text-white">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-neutral-800 text-xs text-white">
             !
           </span>
         )}
@@ -362,7 +362,7 @@ function ToggleSwitch({
       onClick={() => onChange(!checked)}
       className={cn(
         "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors",
-        checked ? "bg-green-600" : "bg-gray-200"
+        checked ? "bg-neutral-800" : "bg-gray-200"
       )}
     >
       <span

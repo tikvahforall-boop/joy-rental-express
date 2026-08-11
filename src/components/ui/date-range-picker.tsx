@@ -44,7 +44,7 @@ function DateRangePicker({
               min={today}
               onChange={(e) => onPickupChange?.(e.target.value)}
               className={cn(
-                "flex h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 py-2 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20",
+                "flex h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 py-2 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20",
                 error && "border-red-500"
               )}
               aria-label={pickupLabel}
@@ -63,7 +63,7 @@ function DateRangePicker({
               min={pickupDate || today}
               onChange={(e) => onReturnChange?.(e.target.value)}
               className={cn(
-                "flex h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 py-2 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20",
+                "flex h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 py-2 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20",
                 error && "border-red-500"
               )}
               aria-label={returnLabel}

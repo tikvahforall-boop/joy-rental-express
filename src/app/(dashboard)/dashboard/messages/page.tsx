@@ -252,7 +252,7 @@ export default function MessagesPage() {
                     onClick={() => handleSelectThread(thread)}
                     className={cn(
                       "flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-gray-50",
-                      selectedThread?.id === thread.id && "bg-green-50"
+                      selectedThread?.id === thread.id && "bg-neutral-50"
                     )}
                   >
                     <Avatar
@@ -270,7 +270,7 @@ export default function MessagesPage() {
                         </span>
                       </div>
                       {thread.booking && (
-                        <p className="truncate text-xs text-green-600">
+                        <p className="truncate text-xs text-neutral-800">
                           {thread.booking.vehicle.year}{" "}
                           {thread.booking.vehicle.make}{" "}
                           {thread.booking.vehicle.model}
@@ -348,7 +348,7 @@ export default function MessagesPage() {
                             className={cn(
                               "max-w-[75%] rounded-2xl px-4 py-2.5",
                               isOwn
-                                ? "rounded-br-md bg-green-600 text-white"
+                                ? "rounded-br-md bg-neutral-800 text-white"
                                 : "rounded-bl-md bg-gray-100 text-gray-900"
                             )}
                           >
@@ -358,7 +358,7 @@ export default function MessagesPage() {
                             <p
                               className={cn(
                                 "mt-1 text-[10px]",
-                                isOwn ? "text-green-200" : "text-gray-400"
+                                isOwn ? "text-neutral-200" : "text-gray-400"
                               )}
                             >
                               {formatMessageTime(msg.createdAt)}
@@ -381,7 +381,7 @@ export default function MessagesPage() {
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type a message..."
-                  className="flex-1 rounded-full border border-gray-300 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+                  className="flex-1 rounded-full border border-gray-300 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
                 />
                 <Button
                   type="submit"

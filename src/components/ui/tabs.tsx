@@ -74,9 +74,9 @@ function Tab({ value, className, children, ...props }: TabProps) {
       aria-controls={`tabpanel-${value}`}
       id={`tab-${value}`}
       className={cn(
-        "relative px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600",
+        "relative px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800",
         isActive
-          ? "text-green-600 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-green-600"
+          ? "text-neutral-800 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-neutral-800"
           : "text-gray-500 hover:text-gray-700",
         className
       )}

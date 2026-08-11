@@ -3,8 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How It Works | Joy Rental Express",
-  description: "Learn how to rent a car or list your vehicle on Joy Rental Express.",
+  title: "How It Works | Mile High Car Rental",
+  description: "Learn how to rent a car or list your vehicle on Mile High Car Rental.",
 };
 
 const renterSteps = [
@@ -52,10 +52,10 @@ const hostSteps = [
 export default function HowItWorksPage() {
   return (
     <div>
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
+      <section className="bg-gradient-to-br from-neutral-800 to-black text-white py-20">
         <div className="container-page text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h1>
-          <p className="text-lg text-green-100 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-100 max-w-2xl mx-auto">
             Whether you want to rent a car or earn money sharing yours, Joy
             Rental Express makes it simple, safe, and rewarding.
           </p>
@@ -70,10 +70,10 @@ export default function HowItWorksPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {renterSteps.map((step, i) => (
               <div key={step.title} className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-neutral-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-8 h-8 text-neutral-800" />
                 </div>
-                <div className="text-sm font-medium text-green-600 mb-1">
+                <div className="text-sm font-medium text-neutral-800 mb-1">
                   Step {i + 1}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -86,7 +86,7 @@ export default function HowItWorksPage() {
           <div className="text-center mt-10">
             <Link
               href="/search"
-              className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+              className="inline-flex items-center gap-2 bg-neutral-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
             >
               Find a Car
             </Link>
@@ -102,10 +102,10 @@ export default function HowItWorksPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {hostSteps.map((step, i) => (
               <div key={step.title} className="text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="w-8 h-8 text-amber-600" />
+                <div className="w-16 h-16 bg-neutral-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-8 h-8 text-neutral-600" />
                 </div>
-                <div className="text-sm font-medium text-amber-600 mb-1">
+                <div className="text-sm font-medium text-neutral-600 mb-1">
                   Step {i + 1}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -118,7 +118,7 @@ export default function HowItWorksPage() {
           <div className="text-center mt-10">
             <Link
               href="/become-a-host"
-              className="inline-flex items-center gap-2 bg-amber-500 text-white px-8 py-3 rounded-xl font-semibold hover:bg-amber-600 transition-colors"
+              className="inline-flex items-center gap-2 bg-neutral-500 text-white px-8 py-3 rounded-xl font-semibold hover:bg-neutral-600 transition-colors"
             >
               Become a Host
             </Link>
@@ -129,11 +129,11 @@ export default function HowItWorksPage() {
       <section className="py-16">
         <div className="container-page">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Why Joy Rental Express?
+            Why Mile High Car Rental?
           </h2>
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <Shield className="w-10 h-10 text-green-600 mx-auto mb-3" />
+              <Shield className="w-10 h-10 text-neutral-800 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">
                 Protection Available
               </h3>
@@ -143,7 +143,7 @@ export default function HowItWorksPage() {
               </p>
             </div>
             <div className="text-center">
-              <Star className="w-10 h-10 text-green-600 mx-auto mb-3" />
+              <Star className="w-10 h-10 text-neutral-800 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">
                 Verified Community
               </h3>
@@ -153,7 +153,7 @@ export default function HowItWorksPage() {
               </p>
             </div>
             <div className="text-center">
-              <HeadphonesIcon className="w-10 h-10 text-green-600 mx-auto mb-3" />
+              <HeadphonesIcon className="w-10 h-10 text-neutral-800 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">
                 24/7 Support
               </h3>

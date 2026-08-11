@@ -2,19 +2,19 @@ import { Shield, Users, MapPin, Heart } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Joy Rental Express",
-  description: "Learn about Joy Rental Express and our mission to make car rental accessible to everyone.",
+  title: "About | Mile High Car Rental",
+  description: "Learn about Mile High Car Rental and our mission to make car rental accessible to everyone.",
 };
 
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
+      <section className="bg-gradient-to-br from-neutral-800 to-black text-white py-20">
         <div className="container-page text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About Joy Rental Express
+            About Mile High Car Rental
           </h1>
-          <p className="text-lg text-green-100 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-100 max-w-2xl mx-auto">
             We're building the future of car rental — combining the flexibility of
             peer-to-peer sharing with the reliability of a professional fleet.
           </p>
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="container-page max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
-            Joy Rental Express was founded with a simple idea: everyone deserves
+            Mile High Car Rental was founded with a simple idea: everyone deserves
             access to a great car when they need one. Whether you're traveling for
             business, going on a family road trip, or just need wheels for the
             weekend, we connect you with the right vehicle at the right price.
@@ -57,7 +57,7 @@ export default function AboutPage() {
               { icon: Heart, title: "Customer Obsessed", desc: "24/7 support and a hassle-free experience." },
             ].map((v) => (
               <div key={v.title} className="text-center">
-                <v.icon className="w-10 h-10 text-green-600 mx-auto mb-3" />
+                <v.icon className="w-10 h-10 text-neutral-800 mx-auto mb-3" />
                 <h3 className="font-semibold text-gray-900 mb-2">{v.title}</h3>
                 <p className="text-sm text-gray-600">{v.desc}</p>
               </div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               { value: "4.8", label: "Average Rating" },
             ].map((stat) => (
               <div key={stat.label}>
-                <div className="text-3xl font-bold text-green-600">
+                <div className="text-3xl font-bold text-neutral-800">
                   {stat.value}
                 </div>
                 <div className="text-sm text-gray-500 mt-1">{stat.label}</div>

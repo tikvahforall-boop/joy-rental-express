@@ -85,7 +85,7 @@ export default function HelpPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <section className="bg-gradient-to-br from-neutral-800 to-black text-white py-16">
         <div className="container-page text-center">
           <h1 className="text-4xl font-bold mb-6">Help Center</h1>
           <div className="max-w-lg mx-auto relative">
@@ -95,7 +95,7 @@ export default function HelpPage() {
               placeholder="Search for help..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-xl text-gray-900 border-0 focus:ring-2 focus:ring-green-300 outline-none"
+              className="w-full pl-12 pr-4 py-3 rounded-xl text-gray-900 border-0 focus:ring-2 focus:ring-neutral-300 outline-none"
             />
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function HelpPage() {
               <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500">
                 No results found. Try a different search or{" "}
-                <Link href="/contact" className="text-green-600 hover:underline">
+                <Link href="/contact" className="text-neutral-800 hover:underline">
                   contact us
                 </Link>
                 .
@@ -119,7 +119,7 @@ export default function HelpPage() {
               {filteredCategories.map((cat) => (
                 <div key={cat.title}>
                   <div className="flex items-center gap-3 mb-4">
-                    <cat.icon className="w-6 h-6 text-green-600" />
+                    <cat.icon className="w-6 h-6 text-neutral-800" />
                     <h2 className="text-xl font-bold text-gray-900">
                       {cat.title}
                     </h2>
@@ -134,8 +134,8 @@ export default function HelpPage() {
             </div>
           )}
 
-          <div className="mt-12 bg-green-50 rounded-2xl p-8 text-center">
-            <MessageCircle className="w-10 h-10 text-green-600 mx-auto mb-3" />
+          <div className="mt-12 bg-neutral-50 rounded-2xl p-8 text-center">
+            <MessageCircle className="w-10 h-10 text-neutral-800 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Still need help?
             </h3>
@@ -144,7 +144,7 @@ export default function HelpPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+              className="inline-flex items-center gap-2 bg-neutral-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
             >
               Contact Support
             </Link>

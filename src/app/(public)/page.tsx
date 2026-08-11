@@ -26,7 +26,7 @@ const TESTIMONIALS = [
     name: "Jessica M.",
     location: "San Francisco, CA",
     rating: 5,
-    text: "Rented a Tesla for a weekend trip down the coast. The booking process was seamless and the car was spotless. Will definitely use Joy Rental Express again!",
+    text: "Rented a Tesla for a weekend trip down the coast. The booking process was seamless and the car was spotless. Will definitely use Mile High Car Rental again!",
   },
   {
     name: "Marcus T.",
@@ -91,13 +91,13 @@ export default async function HomePage() {
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-gradient-to-br from-green-600 via-green-700 to-green-900 px-4 pb-20 pt-16 md:pb-28 md:pt-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-neutral-800 via-neutral-900 to-black px-4 pb-20 pt-16 md:pb-28 md:pt-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent)]" />
         <div className="relative mx-auto max-w-5xl text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
             Find Your Perfect Ride
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-green-100 md:text-xl">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-100 md:text-xl">
             Rent from trusted hosts or our own fleet. Cars available across the US.
           </p>
           <HeroSearch />
@@ -112,7 +112,7 @@ export default async function HomePage() {
               <Link
                 key={cat.value}
                 href={`/search?category=${cat.value}`}
-                className="flex shrink-0 flex-col items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition-all hover:border-green-300 hover:shadow-md"
+                className="flex shrink-0 flex-col items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition-all hover:border-neutral-300 hover:shadow-md"
               >
                 <span className="text-3xl">{cat.icon}</span>
                 <span className="text-sm font-medium text-gray-700">{cat.label}</span>
@@ -128,7 +128,7 @@ export default async function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900">Popular Cars Near You</h2>
             <Link
               href="/search"
-              className="text-sm font-medium text-green-600 hover:text-green-700"
+              className="text-sm font-medium text-neutral-800 hover:text-neutral-900"
             >
               View all
             </Link>
@@ -153,11 +153,11 @@ export default async function HomePage() {
             {HOW_IT_WORKS.map((step, i) => (
               <div key={step.title} className="relative flex flex-col items-center">
                 {i < HOW_IT_WORKS.length - 1 && (
-                  <div className="absolute left-1/2 top-8 hidden h-0.5 w-full bg-green-200 md:block" />
+                  <div className="absolute left-1/2 top-8 hidden h-0.5 w-full bg-neutral-200 md:block" />
                 )}
-                <div className="relative mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <div className="relative mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-neutral-100 text-neutral-800">
                   <step.icon className="h-7 w-7" />
-                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-green-600 text-xs font-bold text-white">
+                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-neutral-800 text-xs font-bold text-white">
                     {i + 1}
                   </span>
                 </div>
@@ -171,13 +171,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-amber-500 to-amber-600 px-4 py-16 md:py-20">
+      <section className="bg-gradient-to-br from-neutral-500 to-neutral-600 px-4 py-16 md:py-20">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 md:flex-row">
           <div className="flex-1 text-center md:text-left">
             <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
               Turn Your Car Into a Money Maker
             </h2>
-            <p className="mb-6 text-lg text-amber-100">
+            <p className="mb-6 text-lg text-neutral-100">
               List your vehicle on {APP_NAME} and earn up to $1,200/month. We handle
               insurance, payments, and customer support so you can sit back and earn.
             </p>
@@ -199,13 +199,13 @@ export default async function HomePage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white bg-white text-amber-600 hover:bg-amber-50 hover:text-amber-700"
+                className="border-white bg-white text-neutral-600 hover:bg-neutral-50 hover:text-neutral-700"
               >
                 Become a Host
               </Button>
             </Link>
           </div>
-          <div className="flex h-48 w-48 items-center justify-center rounded-full bg-amber-400/30 md:h-64 md:w-64">
+          <div className="flex h-48 w-48 items-center justify-center rounded-full bg-neutral-400/30 md:h-64 md:w-64">
             <span className="text-7xl md:text-8xl">🚗</span>
           </div>
         </div>
@@ -225,7 +225,7 @@ export default async function HomePage() {
                 key={item.title}
                 className="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm"
               >
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-neutral-800">
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-2 font-semibold text-gray-900">{item.title}</h3>
@@ -256,7 +256,7 @@ export default async function HomePage() {
                   {Array.from({ length: testimonial.rating }, (_, i) => (
                     <Star
                       key={i}
-                      className="h-4 w-4 fill-amber-400 text-amber-400"
+                      className="h-4 w-4 fill-neutral-400 text-neutral-400"
                     />
                   ))}
                 </div>
@@ -287,19 +287,19 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-green-600 px-4 py-16 md:py-20">
+      <section className="bg-neutral-800 px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
             Ready to Hit the Road?
           </h2>
-          <p className="mb-8 text-lg text-green-100">
+          <p className="mb-8 text-lg text-neutral-100">
             Join thousands of happy renters and find your perfect ride today.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/search">
               <Button
                 size="lg"
-                className="bg-white text-green-600 hover:bg-green-50"
+                className="bg-white text-neutral-800 hover:bg-neutral-50"
               >
                 <Search className="mr-2 h-4 w-4" />
                 Browse Cars
@@ -309,7 +309,7 @@ export default async function HomePage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-green-700"
+                className="border-white text-white hover:bg-neutral-900"
               >
                 <Clock className="mr-2 h-4 w-4" />
                 List Your Car

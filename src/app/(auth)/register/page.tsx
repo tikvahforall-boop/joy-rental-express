@@ -92,7 +92,7 @@ export default function RegisterPage() {
           Create your account
         </h1>
         <p className="mb-6 text-center text-sm text-gray-500">
-          Join Joy Rental Express today
+          Join Mile High Car Rental today
         </p>
 
         {error && (
@@ -112,7 +112,7 @@ export default function RegisterPage() {
                 onClick={() => updateField("role", "RENTER")}
                 className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                   form.role === "RENTER"
-                    ? "border-green-600 bg-green-50 text-green-700"
+                    ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                     : "border-gray-300 text-gray-600 hover:border-gray-400"
                 }`}
               >
@@ -123,7 +123,7 @@ export default function RegisterPage() {
                 onClick={() => updateField("role", "HOST")}
                 className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                   form.role === "HOST"
-                    ? "border-green-600 bg-green-50 text-green-700"
+                    ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                     : "border-gray-300 text-gray-600 hover:border-gray-400"
                 }`}
               >
@@ -182,20 +182,20 @@ export default function RegisterPage() {
               type="checkbox"
               checked={form.acceptTerms}
               onChange={(e) => updateField("acceptTerms", e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+              className="mt-0.5 h-4 w-4 rounded border-gray-300 text-neutral-800 focus:ring-neutral-800"
             />
             <span className="text-sm text-gray-500">
               I agree to the{" "}
               <Link
                 href="/terms"
-                className="text-green-600 hover:text-green-700"
+                className="text-neutral-800 hover:text-neutral-900"
               >
                 Terms of Service
               </Link>{" "}
               and{" "}
               <Link
                 href="/privacy"
-                className="text-green-600 hover:text-green-700"
+                className="text-neutral-800 hover:text-neutral-900"
               >
                 Privacy Policy
               </Link>
@@ -211,7 +211,7 @@ export default function RegisterPage() {
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-medium text-green-600 hover:text-green-700"
+            className="font-medium text-neutral-800 hover:text-neutral-900"
           >
             Sign in
           </Link>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Joy Rental Express",
+  title: "Terms of Service | Mile High Car Rental",
   description:
-    "Read the Terms of Service for Joy Rental Express car rental marketplace.",
+    "Read the Terms of Service for Mile High Car Rental car rental marketplace.",
 };
 
 export default function TermsPage() {
@@ -23,12 +23,12 @@ export default function TermsPage() {
               1. Acceptance of Terms
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              By accessing or using the Joy Rental Express platform, website, or
+              By accessing or using the Mile High Car Rental platform, website, or
               mobile application (collectively, the "Service"), you agree to be
               bound by these Terms of Service ("Terms"). If you do not agree to
               these Terms, you may not use the Service. These Terms constitute a
               legally binding agreement between you and [COMPANY LEGAL NAME]
-              ("Joy Rental Express," "we," "us," or "our"). We reserve the right
+              ("Mile High Car Rental," "we," "us," or "our"). We reserve the right
               to modify these Terms at any time, and your continued use of the
               Service after such modifications constitutes acceptance.
             </p>
@@ -60,7 +60,7 @@ export default function TermsPage() {
               3. The Booking Process
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              Joy Rental Express operates as a marketplace connecting vehicle
+              Mile High Car Rental operates as a marketplace connecting vehicle
               hosts with renters. When you submit a booking request, you are
               making an offer to rent a vehicle under the terms specified in the
               listing. For vehicles with instant booking enabled, your booking is
@@ -137,7 +137,7 @@ export default function TermsPage() {
               7. Limitation of Liability
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Joy Rental Express acts as a marketplace platform and is not a
+              Mile High Car Rental acts as a marketplace platform and is not a
               party to the rental agreement between hosts and renters. To the
               maximum extent permitted by law, [COMPANY LEGAL NAME] shall not
               be liable for any indirect, incidental, special, consequential,
@@ -178,7 +178,7 @@ export default function TermsPage() {
             </p>
             <p className="text-gray-600 leading-relaxed">
               These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of law provisions. For questions, contact us at{" "}
-              <a href="mailto:legal@joyrentalexpress.com" className="text-green-600 hover:underline">legal@joyrentalexpress.com</a>{" "}
+              <a href="mailto:legal@milehighcars.com" className="text-neutral-800 hover:underline">legal@milehighcars.com</a>{" "}
               or write to [COMPANY LEGAL NAME] at our registered business address.
             </p>
           </section>

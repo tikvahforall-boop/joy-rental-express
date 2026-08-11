@@ -224,7 +224,7 @@ export default function AdminUsersPage() {
                     <tr key={user.id} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-medium text-green-700">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-xs font-medium text-neutral-900">
                             {getInitials(user.name || `${user.firstName} ${user.lastName}`)}
                           </div>
                           <span className="font-medium text-gray-900 whitespace-nowrap">
@@ -352,7 +352,7 @@ export default function AdminUsersPage() {
                 onChange={(e) => setBanReason(e.target.value)}
                 placeholder="Enter a reason for banning this user..."
                 rows={3}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500"
               />
             </div>
             <div className="flex justify-end gap-3">

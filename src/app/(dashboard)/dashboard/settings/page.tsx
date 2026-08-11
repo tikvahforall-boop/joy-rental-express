@@ -96,8 +96,8 @@ function Toggle({
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={cn(
-        "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2",
-        checked ? "bg-green-600" : "bg-gray-200"
+        "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-800 focus:ring-offset-2",
+        checked ? "bg-neutral-800" : "bg-gray-200"
       )}
     >
       <span
@@ -287,7 +287,7 @@ export default function SettingsPage() {
             <p className="text-sm text-red-600">{passwordError}</p>
           )}
           {passwordSuccess && (
-            <p className="text-sm text-green-600">
+            <p className="text-sm text-neutral-800">
               Password updated successfully.
             </p>
           )}

@@ -209,7 +209,7 @@ export default function VehiclesPage() {
                     </Badge>
                   </div>
 
-                  <p className="text-lg font-bold text-green-600">
+                  <p className="text-lg font-bold text-neutral-800">
                     {formatCurrency(vehicle.dailyPrice)}{" "}
                     <span className="text-sm font-normal text-gray-500">/day</span>
                   </p>
@@ -217,7 +217,7 @@ export default function VehiclesPage() {
                   <div className="flex items-center gap-4 text-sm text-gray-500">
                     <span>{vehicle.totalTrips} trips</span>
                     <span className="flex items-center gap-1">
-                      <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                      <Star className="h-3.5 w-3.5 fill-neutral-400 text-neutral-400" />
                       {vehicle.avgRating > 0 ? vehicle.avgRating.toFixed(1) : "N/A"}
                     </span>
                   </div>

@@ -81,7 +81,7 @@ export default function DashboardSidebar({ role }: { role: string }) {
     <>
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg lg:hidden"
+        className="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800 text-white shadow-lg lg:hidden"
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -101,7 +101,7 @@ export default function DashboardSidebar({ role }: { role: string }) {
       >
         <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-green-600" />
+            <ShieldCheck className="h-5 w-5 text-neutral-800" />
             <span className="text-sm font-semibold text-gray-900">
               {roleLabel} Panel
             </span>
@@ -130,14 +130,14 @@ export default function DashboardSidebar({ role }: { role: string }) {
                     className={cn(
                       "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       isActive
-                        ? "bg-green-50 text-green-700"
+                        ? "bg-neutral-50 text-neutral-900"
                         : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     )}
                   >
                     <item.icon
                       className={cn(
                         "h-4 w-4",
-                        isActive ? "text-green-600" : "text-gray-400"
+                        isActive ? "text-neutral-800" : "text-gray-400"
                       )}
                     />
                     {item.label}

@@ -34,9 +34,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Car className="h-7 w-7 text-green-600" />
+          <Car className="h-7 w-7 text-neutral-800" />
           <span className="text-lg font-bold text-gray-900">
-            Joy Rental Express
+            Mile High Car Rental
           </span>
         </Link>
 
@@ -81,7 +81,7 @@ export default function Header() {
                     className="h-8 w-8 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 text-xs font-medium text-white">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 text-xs font-medium text-white">
                     {getInitials(session.user.name || session.user.email || "U")}
                   </div>
                 )}

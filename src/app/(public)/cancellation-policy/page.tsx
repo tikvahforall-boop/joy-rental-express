@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cancellation Policy | Joy Rental Express",
+  title: "Cancellation Policy | Mile High Car Rental",
   description:
-    "Understand the cancellation and refund policies for bookings on Joy Rental Express.",
+    "Understand the cancellation and refund policies for bookings on Mile High Car Rental.",
 };
 
 const policies = [
@@ -52,7 +52,7 @@ export default function CancellationPolicyPage() {
         <div className="prose prose-gray max-w-none space-y-8">
           <section>
             <p className="text-gray-600 leading-relaxed">
-              We understand plans change. Joy Rental Express offers three cancellation policy tiers that hosts choose for their listings. The applicable policy is displayed on each listing and at checkout. Service fees are refunded in full for cancellations that qualify for a full refund; otherwise, service fees are non-refundable.
+              We understand plans change. Mile High Car Rental offers three cancellation policy tiers that hosts choose for their listings. The applicable policy is displayed on each listing and at checkout. Service fees are refunded in full for cancellations that qualify for a full refund; otherwise, service fees are non-refundable.
             </p>
           </section>
 
@@ -81,7 +81,7 @@ export default function CancellationPolicyPage() {
                     <td className="py-3 px-4 text-sm text-gray-600">
                       48 or more hours before scheduled pickup
                     </td>
-                    <td className="py-3 px-4 text-sm text-green-700 font-medium">
+                    <td className="py-3 px-4 text-sm text-neutral-900 font-medium">
                       Full refund
                     </td>
                   </tr>
@@ -89,7 +89,7 @@ export default function CancellationPolicyPage() {
                     <td className="py-3 px-4 text-sm text-gray-600">
                       24 to 48 hours before scheduled pickup
                     </td>
-                    <td className="py-3 px-4 text-sm text-amber-700 font-medium">
+                    <td className="py-3 px-4 text-sm text-neutral-700 font-medium">
                       50% refund
                     </td>
                   </tr>
@@ -137,9 +137,9 @@ export default function CancellationPolicyPage() {
                         <span
                           className={`font-medium ${
                             rule.refund === "Full refund"
-                              ? "text-green-700"
+                              ? "text-neutral-900"
                               : rule.refund === "50% refund"
-                                ? "text-amber-700"
+                                ? "text-neutral-700"
                                 : "text-red-700"
                           }`}
                         >
@@ -176,7 +176,7 @@ export default function CancellationPolicyPage() {
               If a renter does not pick up the vehicle within 2 hours of the scheduled pickup time without contacting the host, the booking may be treated as a no-show and is not eligible for any refund.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              In cases of documented emergencies such as natural disasters, government travel restrictions, or serious illness, Joy Rental Express may override the standard policy and issue a full refund at its discretion. Supporting documentation may be required.
+              In cases of documented emergencies such as natural disasters, government travel restrictions, or serious illness, Mile High Car Rental may override the standard policy and issue a full refund at its discretion. Supporting documentation may be required.
             </p>
           </section>
 
@@ -186,7 +186,7 @@ export default function CancellationPolicyPage() {
             </h2>
             <p className="text-gray-600 leading-relaxed">
               Cancel from your dashboard under "My Trips." The applicable refund amount is displayed before you confirm. Refunds are processed within 5-10 business days to the original payment method. For assistance, contact{" "}
-              <a href="mailto:support@joyrentalexpress.com" className="text-green-600 hover:underline">support@joyrentalexpress.com</a>.
+              <a href="mailto:support@milehighcars.com" className="text-neutral-800 hover:underline">support@milehighcars.com</a>.
             </p>
           </section>
         </div>

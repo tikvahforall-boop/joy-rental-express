@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Joy Rental Express",
+  title: "Cookie Policy | Mile High Car Rental",
   description:
-    "Learn about how Joy Rental Express uses cookies and similar technologies.",
+    "Learn about how Mile High Car Rental uses cookies and similar technologies.",
 };
 
 const cookieTypes = [
@@ -82,7 +82,7 @@ export default function CookiePolicyPage() {
                       className={`text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap ${
                         cookie.canDisable
                           ? "bg-gray-100 text-gray-600"
-                          : "bg-green-50 text-green-700"
+                          : "bg-neutral-50 text-neutral-900"
                       }`}
                     >
                       {cookie.canDisable ? "Optional" : "Required"}
@@ -176,10 +176,10 @@ export default function CookiePolicyPage() {
               If you have questions about our use of cookies, please contact us
               at{" "}
               <a
-                href="mailto:privacy@joyrentalexpress.com"
-                className="text-green-600 hover:underline"
+                href="mailto:privacy@milehighcars.com"
+                className="text-neutral-800 hover:underline"
               >
-                privacy@joyrentalexpress.com
+                privacy@milehighcars.com
               </a>
               .
             </p>

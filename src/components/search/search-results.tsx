@@ -66,7 +66,7 @@ export function SearchResults({ result }: SearchResultsProps) {
           <select
             value={currentSort}
             onChange={(e) => updateParam("sort", e.target.value)}
-            className="h-9 rounded-lg border border-gray-300 bg-white px-3 pr-8 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            className="h-9 rounded-lg border border-gray-300 bg-white px-3 pr-8 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
           >
             {SORT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -82,7 +82,7 @@ export function SearchResults({ result }: SearchResultsProps) {
               className={cn(
                 "rounded-l-lg px-3 py-1.5 transition-colors",
                 currentView === "grid"
-                  ? "bg-green-50 text-green-600"
+                  ? "bg-neutral-50 text-neutral-800"
                   : "text-gray-500 hover:bg-gray-50"
               )}
               aria-label="Grid view"
@@ -95,7 +95,7 @@ export function SearchResults({ result }: SearchResultsProps) {
               className={cn(
                 "rounded-r-lg border-l border-gray-300 px-3 py-1.5 transition-colors",
                 currentView === "map"
-                  ? "bg-green-50 text-green-600"
+                  ? "bg-neutral-50 text-neutral-800"
                   : "text-gray-500 hover:bg-gray-50"
               )}
               aria-label="Map view"
@@ -150,7 +150,7 @@ export function SearchResults({ result }: SearchResultsProps) {
                 className={cn(
                   "inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium transition-colors",
                   page === result.page
-                    ? "bg-green-600 text-white"
+                    ? "bg-neutral-800 text-white"
                     : "border border-gray-300 text-gray-700 hover:bg-gray-50"
                 )}
               >

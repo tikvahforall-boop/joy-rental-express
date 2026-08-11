@@ -63,7 +63,7 @@ export default function BookingConfirmationPage() {
   if (loading) {
     return (
       <div className="container-page py-16 text-center">
-        <Loader2 className="w-8 h-8 animate-spin text-green-600 mx-auto" />
+        <Loader2 className="w-8 h-8 animate-spin text-neutral-800 mx-auto" />
       </div>
     );
   }
@@ -74,7 +74,7 @@ export default function BookingConfirmationPage() {
         <h1 className="text-2xl font-bold text-gray-900">Booking not found</h1>
         <Link
           href="/search"
-          className="mt-4 inline-block text-green-600 hover:underline"
+          className="mt-4 inline-block text-neutral-800 hover:underline"
         >
           Browse vehicles
         </Link>
@@ -90,7 +90,7 @@ export default function BookingConfirmationPage() {
   return (
     <div className="container-page py-8 max-w-3xl mx-auto">
       <div className="text-center mb-8">
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+        <CheckCircle className="w-16 h-16 text-neutral-500 mx-auto mb-4" />
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
           {booking.status === "CONFIRMED"
             ? "Booking Confirmed!"
@@ -101,7 +101,7 @@ export default function BookingConfirmationPage() {
             ? "Your reservation is confirmed. Get ready for your trip!"
             : "Your host will review your request and respond within 24 hours."}
         </p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
+        <div className="mt-4 inline-flex items-center gap-2 bg-neutral-50 text-neutral-900 px-4 py-2 rounded-full text-sm font-medium">
           Reservation #{booking.bookingRef}
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function BookingConfirmationPage() {
             Trip details
           </h2>
           <div className="flex gap-4 mb-4 pb-4 border-b border-gray-100">
-            <div className="w-24 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="w-24 h-16 bg-gradient-to-br from-neutral-400 to-neutral-800 rounded-lg flex items-center justify-center flex-shrink-0">
               <Car className="w-10 h-10 text-white/60" />
             </div>
             <div>
@@ -128,7 +128,7 @@ export default function BookingConfirmationPage() {
 
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div className="flex items-start gap-3">
-              <Calendar className="w-5 h-5 text-green-600 mt-0.5" />
+              <Calendar className="w-5 h-5 text-neutral-800 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Pickup</div>
                 <div className="text-gray-600">
@@ -137,7 +137,7 @@ export default function BookingConfirmationPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Calendar className="w-5 h-5 text-green-600 mt-0.5" />
+              <Calendar className="w-5 h-5 text-neutral-800 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Return</div>
                 <div className="text-gray-600">
@@ -146,7 +146,7 @@ export default function BookingConfirmationPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-green-600 mt-0.5" />
+              <MapPin className="w-5 h-5 text-neutral-800 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Pickup method</div>
                 <div className="text-gray-600 capitalize">
@@ -156,7 +156,7 @@ export default function BookingConfirmationPage() {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Clock className="w-5 h-5 text-green-600 mt-0.5" />
+              <Clock className="w-5 h-5 text-neutral-800 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Duration</div>
                 <div className="text-gray-600">
@@ -178,7 +178,7 @@ export default function BookingConfirmationPage() {
                 <span
                   className={
                     item.type === "discount"
-                      ? "text-green-600"
+                      ? "text-neutral-800"
                       : "text-gray-900"
                   }
                 >
@@ -199,7 +199,7 @@ export default function BookingConfirmationPage() {
             Your host
           </h2>
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold text-lg">
+            <div className="w-12 h-12 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-900 font-bold text-lg">
               {hostName[0]?.toUpperCase()}
             </div>
             <div className="flex-1">
@@ -212,14 +212,14 @@ export default function BookingConfirmationPage() {
         </div>
 
         {booking.insuranceFee > 0 && (
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-6">
+          <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-6">
             <div className="flex items-start gap-3">
-              <Shield className="w-6 h-6 text-green-600 mt-0.5" />
+              <Shield className="w-6 h-6 text-neutral-800 mt-0.5" />
               <div>
-                <h3 className="font-semibold text-green-800">
+                <h3 className="font-semibold text-black">
                   Protection plan selected
                 </h3>
-                <p className="text-sm text-green-700 mt-1">
+                <p className="text-sm text-neutral-900 mt-1">
                   {booking.insurancePolicy
                     ? `Your ${booking.insurancePolicy.coverageTier} protection is ${booking.insurancePolicy.status}.`
                     : "Your protection selection will be confirmed with your booking. Coverage is only active upon confirmed policy issuance."}
@@ -232,7 +232,7 @@ export default function BookingConfirmationPage() {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/dashboard/bookings"
-            className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 bg-neutral-800 text-white py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
           >
             View My Trips
           </Link>

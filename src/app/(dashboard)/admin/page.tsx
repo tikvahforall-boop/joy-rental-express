@@ -145,8 +145,8 @@ export default function AdminDashboardPage() {
       <div className="flex min-h-[60vh] items-center justify-center p-6">
         <Card className="max-w-md text-center">
           <CardHeader>
-            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
-              <AlertTriangle className="h-6 w-6 text-amber-600" />
+            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100">
+              <AlertTriangle className="h-6 w-6 text-neutral-600" />
             </div>
             <CardTitle>Failed to Load Dashboard</CardTitle>
           </CardHeader>
@@ -166,56 +166,56 @@ export default function AdminDashboardPage() {
       value: stats.users.total.toLocaleString(),
       description: `${stats.users.hosts} hosts, ${stats.users.renters} renters`,
       icon: Users,
-      bgColor: "bg-green-100",
-      iconColor: "text-green-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-800",
     },
     {
       label: "Active Vehicles",
       value: stats.vehicles.active.toLocaleString(),
       description: `${stats.vehicles.total} total vehicles`,
       icon: Car,
-      bgColor: "bg-green-100",
-      iconColor: "text-green-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-800",
     },
     {
       label: "Total Bookings",
       value: stats.bookings.total.toLocaleString(),
       description: `${stats.bookings.confirmed} confirmed, ${stats.bookings.completed} completed`,
       icon: CalendarDays,
-      bgColor: "bg-green-100",
-      iconColor: "text-green-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-800",
     },
     {
       label: "Gross Booking Value",
       value: formatCurrency(stats.financials.grossBookingValue),
       description: "Total value of all qualifying bookings",
       icon: DollarSign,
-      bgColor: "bg-amber-100",
-      iconColor: "text-amber-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-600",
     },
     {
       label: "Platform Fees",
       value: formatCurrency(stats.financials.platformFees),
       description: "Fees collected from hosts",
       icon: Percent,
-      bgColor: "bg-amber-100",
-      iconColor: "text-amber-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-600",
     },
     {
       label: "Service Fees",
       value: formatCurrency(stats.financials.serviceFees),
       description: "Fees collected from renters",
       icon: CreditCard,
-      bgColor: "bg-amber-100",
-      iconColor: "text-amber-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-600",
     },
     {
       label: "Total Payouts",
       value: formatCurrency(stats.financials.totalPayouts),
       description: "Paid out to hosts",
       icon: Wallet,
-      bgColor: "bg-green-100",
-      iconColor: "text-green-600",
+      bgColor: "bg-neutral-100",
+      iconColor: "text-neutral-800",
     },
     {
       label: "Cancellation Rate",
@@ -223,11 +223,11 @@ export default function AdminDashboardPage() {
       description: `${stats.bookings.cancelled} cancelled bookings`,
       icon: XCircle,
       bgColor:
-        stats.bookings.cancellationRate > 10 ? "bg-red-100" : "bg-amber-100",
+        stats.bookings.cancellationRate > 10 ? "bg-red-100" : "bg-neutral-100",
       iconColor:
         stats.bookings.cancellationRate > 10
           ? "text-red-600"
-          : "text-amber-600",
+          : "text-neutral-600",
     },
   ];
 
@@ -303,8 +303,8 @@ export default function AdminDashboardPage() {
             <Link key={link.href} href={link.href}>
               <Card className="transition-shadow hover:shadow-md">
                 <CardContent className="flex items-center gap-4 p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-50">
-                    <link.icon className="h-5 w-5 text-green-600" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-neutral-50">
+                    <link.icon className="h-5 w-5 text-neutral-800" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-gray-900">

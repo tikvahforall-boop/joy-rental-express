@@ -226,7 +226,7 @@ export default function AdminVehiclesPage() {
                       <td className="px-4 py-3">
                         {vehicle.avgRating !== null ? (
                           <div className="flex items-center gap-1 text-gray-600">
-                            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                            <Star className="h-3.5 w-3.5 fill-neutral-400 text-neutral-400" />
                             {vehicle.avgRating.toFixed(1)}
                           </div>
                         ) : (

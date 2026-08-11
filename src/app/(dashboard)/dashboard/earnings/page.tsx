@@ -120,7 +120,7 @@ export default function EarningsPage() {
       <h1 className="text-2xl font-bold text-gray-900">Earnings</h1>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Card className="border-t-4 border-t-green-600">
+        <Card className="border-t-4 border-t-neutral-800">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -129,14 +129,14 @@ export default function EarningsPage() {
                   {formatCurrency(totalEarnings)}
                 </p>
               </div>
-              <div className="rounded-full bg-green-100 p-3">
-                <DollarSign className="h-5 w-5 text-green-600" />
+              <div className="rounded-full bg-neutral-100 p-3">
+                <DollarSign className="h-5 w-5 text-neutral-800" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-t-4 border-t-amber-500">
+        <Card className="border-t-4 border-t-neutral-500">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -145,8 +145,8 @@ export default function EarningsPage() {
                   {formatCurrency(monthlyEarnings)}
                 </p>
               </div>
-              <div className="rounded-full bg-amber-100 p-3">
-                <TrendingUp className="h-5 w-5 text-amber-600" />
+              <div className="rounded-full bg-neutral-100 p-3">
+                <TrendingUp className="h-5 w-5 text-neutral-600" />
               </div>
             </div>
           </CardContent>
@@ -181,7 +181,7 @@ export default function EarningsPage() {
                   {formatCurrency(item.amount)}
                 </span>
                 <div
-                  className="w-full rounded-t-md bg-green-500 transition-all"
+                  className="w-full rounded-t-md bg-neutral-500 transition-all"
                   style={{
                     height: `${(item.amount / maxMonthlyAmount) * 140}px`,
                     minHeight: 8,

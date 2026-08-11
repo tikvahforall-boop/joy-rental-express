@@ -214,7 +214,7 @@ export default function AdminPaymentsPage() {
                       <td className="whitespace-nowrap px-4 py-3 font-medium text-gray-900">
                         {formatCurrency(payment.amount)}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-3 text-green-600">
+                      <td className="whitespace-nowrap px-4 py-3 text-neutral-800">
                         {formatCurrency(payment.platformFee)}
                       </td>
                       <td className="whitespace-nowrap px-4 py-3 text-gray-700">
@@ -247,9 +247,9 @@ function StatCard({
   color: string;
 }) {
   const colorMap: Record<string, string> = {
-    green: "bg-green-50 text-green-600 border-green-200",
+    green: "bg-neutral-50 text-neutral-800 border-neutral-200",
     blue: "bg-blue-50 text-blue-600 border-blue-200",
-    amber: "bg-amber-50 text-amber-600 border-amber-200",
+    amber: "bg-neutral-50 text-neutral-600 border-neutral-200",
     purple: "bg-purple-50 text-purple-600 border-purple-200",
   };
 

@@ -12,7 +12,7 @@ const WheelbaseStore = dynamic(
     loading: () => (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-green-200 border-t-green-600" />
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-neutral-200 border-t-neutral-800" />
           <p className="text-sm text-gray-500">Loading rental store...</p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function BookPage() {
       <WheelbaseStore
         dealerId={dealerId}
         storeType="auto"
-        primaryColor="#16a34a"
-        secondaryColor="#f59e0b"
+        primaryColor="#121212"
+        secondaryColor="#525252"
         showReviews
         hideLocaleSelector
         locale="en-us"

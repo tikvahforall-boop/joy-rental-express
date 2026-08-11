@@ -98,15 +98,15 @@ function ImageGallery({ images }: { images: Vehicle["images"] }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const placeholderColors = [
-    "from-green-400 to-green-600",
-    "from-emerald-400 to-emerald-600",
+    "from-neutral-400 to-neutral-800",
+    "from-neutral-400 to-neutral-800",
     "from-teal-400 to-teal-600",
-    "from-green-500 to-emerald-700",
+    "from-neutral-500 to-neutral-900",
   ];
 
   if (images.length === 0) {
     return (
-      <div className="relative aspect-[16/9] w-full rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+      <div className="relative aspect-[16/9] w-full rounded-2xl bg-gradient-to-br from-neutral-400 to-neutral-800 flex items-center justify-center">
         <Car className="w-24 h-24 text-white/60" />
       </div>
     );
@@ -141,7 +141,7 @@ function ImageGallery({ images }: { images: Vehicle["images"] }) {
               className={cn(
                 "flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-colors",
                 i === selectedIndex
-                  ? "border-green-600"
+                  ? "border-neutral-800"
                   : "border-transparent hover:border-gray-300"
               )}
             >
@@ -206,7 +206,7 @@ function BookingWidget({ vehicle }: { vehicle: Vehicle }) {
             value={pickupDate}
             min={today}
             onChange={(e) => setPickupDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
           />
         </div>
         <div>
@@ -218,7 +218,7 @@ function BookingWidget({ vehicle }: { vehicle: Vehicle }) {
             value={returnDate}
             min={pickupDate || today}
             onChange={(e) => setReturnDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
           />
         </div>
       </div>
@@ -258,7 +258,7 @@ function BookingWidget({ vehicle }: { vehicle: Vehicle }) {
         className={cn(
           "block w-full text-center py-3 rounded-xl font-semibold text-white transition-colors",
           pickupDate && returnDate
-            ? "bg-green-600 hover:bg-green-700"
+            ? "bg-neutral-800 hover:bg-neutral-900"
             : "bg-gray-300 cursor-not-allowed"
         )}
       >
@@ -320,7 +320,7 @@ export default function VehicleDetailPage() {
         </p>
         <Link
           href="/search"
-          className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+          className="inline-flex items-center gap-2 bg-neutral-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
         >
           Browse vehicles
         </Link>
@@ -334,11 +334,11 @@ export default function VehicleDetailPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-        <Link href="/" className="hover:text-green-600">
+        <Link href="/" className="hover:text-neutral-800">
           Home
         </Link>
         <ChevronRight className="w-4 h-4" />
-        <Link href="/search" className="hover:text-green-600">
+        <Link href="/search" className="hover:text-neutral-800">
           Search
         </Link>
         <ChevronRight className="w-4 h-4" />
@@ -361,7 +361,7 @@ export default function VehicleDetailPage() {
                 <div className="flex items-center gap-3 mt-2 text-gray-600">
                   {vehicle.avgRating && (
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      <Star className="w-4 h-4 fill-neutral-400 text-neutral-400" />
                       <span className="font-medium">
                         {vehicle.avgRating.toFixed(1)}
                       </span>
@@ -389,9 +389,9 @@ export default function VehicleDetailPage() {
             </div>
 
             {vehicle.isCompanyOwned && (
-              <div className="mt-3 inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+              <div className="mt-3 inline-flex items-center gap-1.5 bg-neutral-50 text-neutral-900 px-3 py-1 rounded-full text-sm font-medium">
                 <Shield className="w-4 h-4" />
-                Joy Rental Express Fleet
+                Mile High Car Rental Fleet
               </div>
             )}
           </div>
@@ -402,14 +402,14 @@ export default function VehicleDetailPage() {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                <Users className="w-5 h-5 text-green-600" />
+                <Users className="w-5 h-5 text-neutral-800" />
                 <div>
                   <p className="text-sm text-gray-500">Seats</p>
                   <p className="font-medium">{vehicle.seats}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                <Gauge className="w-5 h-5 text-green-600" />
+                <Gauge className="w-5 h-5 text-neutral-800" />
                 <div>
                   <p className="text-sm text-gray-500">Transmission</p>
                   <p className="font-medium">
@@ -418,7 +418,7 @@ export default function VehicleDetailPage() {
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                <Fuel className="w-5 h-5 text-green-600" />
+                <Fuel className="w-5 h-5 text-neutral-800" />
                 <div>
                   <p className="text-sm text-gray-500">Fuel</p>
                   <p className="font-medium capitalize">
@@ -427,7 +427,7 @@ export default function VehicleDetailPage() {
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                <Car className="w-5 h-5 text-green-600" />
+                <Car className="w-5 h-5 text-neutral-800" />
                 <div>
                   <p className="text-sm text-gray-500">Doors</p>
                   <p className="font-medium">{vehicle.doors}</p>
@@ -435,7 +435,7 @@ export default function VehicleDetailPage() {
               </div>
               {vehicle.electricRange && (
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <Zap className="w-5 h-5 text-green-600" />
+                  <Zap className="w-5 h-5 text-neutral-800" />
                   <div>
                     <p className="text-sm text-gray-500">EV Range</p>
                     <p className="font-medium">{vehicle.electricRange} mi</p>
@@ -467,7 +467,7 @@ export default function VehicleDetailPage() {
                     key={f.id}
                     className="flex items-center gap-2 text-gray-700"
                   >
-                    <Check className="w-4 h-4 text-green-600" />
+                    <Check className="w-4 h-4 text-neutral-800" />
                     {f.name}
                   </div>
                 ))}
@@ -494,7 +494,7 @@ export default function VehicleDetailPage() {
                         </p>
                       )}
                     </div>
-                    <span className="font-medium text-green-600">
+                    <span className="font-medium text-neutral-800">
                       {formatCurrency(addon.pricePerDay)}/day
                     </span>
                   </div>
@@ -510,7 +510,7 @@ export default function VehicleDetailPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-4 bg-gray-50 rounded-xl">
                 <div className="flex items-center gap-2 mb-2">
-                  <Gauge className="w-5 h-5 text-green-600" />
+                  <Gauge className="w-5 h-5 text-neutral-800" />
                   <h3 className="font-medium">Mileage</h3>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -521,7 +521,7 @@ export default function VehicleDetailPage() {
               </div>
               <div className="p-4 bg-gray-50 rounded-xl">
                 <div className="flex items-center gap-2 mb-2">
-                  <Fuel className="w-5 h-5 text-green-600" />
+                  <Fuel className="w-5 h-5 text-neutral-800" />
                   <h3 className="font-medium">Fuel policy</h3>
                 </div>
                 <p className="text-sm text-gray-600 capitalize">
@@ -530,7 +530,7 @@ export default function VehicleDetailPage() {
               </div>
               <div className="p-4 bg-gray-50 rounded-xl">
                 <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-5 h-5 text-green-600" />
+                  <Calendar className="w-5 h-5 text-neutral-800" />
                   <h3 className="font-medium">Trip length</h3>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -541,7 +541,7 @@ export default function VehicleDetailPage() {
               {vehicle.deliveryEnabled && (
                 <div className="p-4 bg-gray-50 rounded-xl">
                   <div className="flex items-center gap-2 mb-2">
-                    <MapPin className="w-5 h-5 text-green-600" />
+                    <MapPin className="w-5 h-5 text-neutral-800" />
                     <h3 className="font-medium">Delivery available</h3>
                   </div>
                   <p className="text-sm text-gray-600">
@@ -561,12 +561,12 @@ export default function VehicleDetailPage() {
               </h2>
               <div className="flex gap-3">
                 {vehicle.weeklyDiscount ? (
-                  <div className="bg-amber-50 text-amber-700 px-4 py-2 rounded-xl text-sm font-medium">
+                  <div className="bg-neutral-50 text-neutral-700 px-4 py-2 rounded-xl text-sm font-medium">
                     {vehicle.weeklyDiscount}% off weekly
                   </div>
                 ) : null}
                 {vehicle.monthlyDiscount ? (
-                  <div className="bg-amber-50 text-amber-700 px-4 py-2 rounded-xl text-sm font-medium">
+                  <div className="bg-neutral-50 text-neutral-700 px-4 py-2 rounded-xl text-sm font-medium">
                     {vehicle.monthlyDiscount}% off monthly
                   </div>
                 ) : null}
@@ -579,7 +579,7 @@ export default function VehicleDetailPage() {
               Hosted by {hostName}
             </h2>
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-bold text-lg flex-shrink-0">
+              <div className="w-14 h-14 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-900 font-bold text-lg flex-shrink-0">
                 {hostName[0]?.toUpperCase()}
               </div>
               <div className="flex-1">
@@ -588,7 +588,7 @@ export default function VehicleDetailPage() {
                     {hostName}
                   </span>
                   {vehicle.host.hostProfile?.superHost && (
-                    <span className="bg-amber-100 text-amber-700 text-xs font-medium px-2 py-0.5 rounded-full">
+                    <span className="bg-neutral-100 text-neutral-700 text-xs font-medium px-2 py-0.5 rounded-full">
                       Superhost
                     </span>
                   )}
@@ -597,7 +597,7 @@ export default function VehicleDetailPage() {
                   <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
                     {vehicle.host.hostProfile.avgRating && (
                       <span className="flex items-center gap-1">
-                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        <Star className="w-3.5 h-3.5 fill-neutral-400 text-neutral-400" />
                         {vehicle.host.hostProfile.avgRating.toFixed(1)}
                       </span>
                     )}
@@ -654,7 +654,7 @@ export default function VehicleDetailPage() {
                             className={cn(
                               "w-3.5 h-3.5",
                               i < review.overallRating
-                                ? "fill-amber-400 text-amber-400"
+                                ? "fill-neutral-400 text-neutral-400"
                                 : "text-gray-200"
                             )}
                           />
@@ -693,7 +693,7 @@ export default function VehicleDetailPage() {
           </div>
           <Link
             href={`/booking/new?vehicleId=${vehicle.id}`}
-            className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+            className="bg-neutral-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
           >
             {vehicle.bookingMode === "INSTANT"
               ? "Book Instantly"

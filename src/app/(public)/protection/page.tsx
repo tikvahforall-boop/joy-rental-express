@@ -3,8 +3,8 @@ import { INSURANCE_TIERS } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Protection Plans | Joy Rental Express",
-  description: "Learn about vehicle protection and insurance options available on Joy Rental Express.",
+  title: "Protection Plans | Mile High Car Rental",
+  description: "Learn about vehicle protection and insurance options available on Mile High Car Rental.",
 };
 
 const coverageComparison = [
@@ -19,13 +19,13 @@ const coverageComparison = [
 export default function ProtectionPage() {
   return (
     <div>
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
+      <section className="bg-gradient-to-br from-neutral-800 to-black text-white py-20">
         <div className="container-page text-center">
           <Shield className="w-16 h-16 mx-auto mb-6 opacity-80" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Protection Plans
           </h1>
-          <p className="text-lg text-green-100 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-100 max-w-2xl mx-auto">
             Drive with peace of mind. Choose the protection level that's right
             for your trip.
           </p>
@@ -40,12 +40,12 @@ export default function ProtectionPage() {
                 key={tier.id}
                 className={`relative p-6 rounded-2xl border-2 ${
                   tier.id === "premium"
-                    ? "border-green-600 shadow-lg"
+                    ? "border-neutral-800 shadow-lg"
                     : "border-gray-200"
                 }`}
               >
                 {tier.id === "premium" && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs font-semibold px-3 py-1 rounded-full">
                     Most Popular
                   </div>
                 )}
@@ -86,7 +86,7 @@ export default function ProtectionPage() {
                   <th className="text-center py-3 px-4 text-sm font-medium text-gray-500">
                     Standard
                   </th>
-                  <th className="text-center py-3 px-4 text-sm font-medium text-green-600 font-semibold">
+                  <th className="text-center py-3 px-4 text-sm font-medium text-neutral-800 font-semibold">
                     Premium
                   </th>
                   <th className="text-center py-3 px-4 text-sm font-medium text-gray-500">
@@ -104,7 +104,7 @@ export default function ProtectionPage() {
                       (included, i) => (
                         <td key={i} className="text-center py-3 px-4">
                           {included ? (
-                            <Check className="w-5 h-5 text-green-600 mx-auto" />
+                            <Check className="w-5 h-5 text-neutral-800 mx-auto" />
                           ) : (
                             <X className="w-5 h-5 text-gray-300 mx-auto" />
                           )}
@@ -121,14 +121,14 @@ export default function ProtectionPage() {
 
       <section className="py-16">
         <div className="container-page max-w-3xl">
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+          <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-6">
             <div className="flex gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
+              <AlertTriangle className="w-6 h-6 text-neutral-600 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-amber-800 mb-2">
+                <h3 className="font-semibold text-neutral-800 mb-2">
                   Important Notice
                 </h3>
-                <p className="text-sm text-amber-700">
+                <p className="text-sm text-neutral-700">
                   Protection plans are provided through our insurance partners
                   and are subject to terms, conditions, and eligibility
                   requirements. Coverage details, pricing, and availability may

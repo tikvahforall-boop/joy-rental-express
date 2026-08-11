@@ -29,8 +29,8 @@ export function HeroSearch() {
           pickupTimeEnd="18:00"
           returnTimeStart="08:00"
           returnTimeEnd="18:00"
-          primaryColor="#16a34a"
-          primaryHoverColor="#15803d"
+          primaryColor="#121212"
+          primaryHoverColor="#000000"
           primaryForegroundColor="#ffffff"
           surfaceColor="#ffffff"
           radius="soft"
@@ -80,7 +80,7 @@ function FallbackSearch() {
               placeholder="City, airport, or address"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm placeholder:text-gray-400 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+              className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm placeholder:text-gray-400 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ function FallbackSearch() {
                 type="date"
                 value={pickupDate}
                 onChange={(e) => setPickupDate(e.target.value)}
-                className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+                className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
               />
             </div>
           </div>
@@ -113,7 +113,7 @@ function FallbackSearch() {
                 type="date"
                 value={returnDate}
                 onChange={(e) => setReturnDate(e.target.value)}
-                className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+                className="h-11 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
               />
             </div>
           </div>

@@ -242,9 +242,9 @@ export default function AdminSettingsPage() {
       </div>
 
       {successMessage && (
-        <div className="flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
-          <CheckCircle className="h-4 w-4 shrink-0 text-green-600" />
-          <p className="text-sm font-medium text-green-800">
+        <div className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3">
+          <CheckCircle className="h-4 w-4 shrink-0 text-neutral-800" />
+          <p className="text-sm font-medium text-black">
             {successMessage}
           </p>
         </div>
@@ -341,7 +341,7 @@ export default function AdminSettingsPage() {
                   }))
                 }
                 className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors ${
-                  formValues.insurance_enabled ? "bg-green-600" : "bg-gray-300"
+                  formValues.insurance_enabled ? "bg-neutral-800" : "bg-gray-300"
                 }`}
               >
                 <span
@@ -374,7 +374,7 @@ export default function AdminSettingsPage() {
                   }))
                 }
                 className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors ${
-                  formValues.sandbox_mode ? "bg-green-600" : "bg-gray-300"
+                  formValues.sandbox_mode ? "bg-neutral-800" : "bg-gray-300"
                 }`}
               >
                 <span

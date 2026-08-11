@@ -15,7 +15,7 @@ const WheelbaseListing = dynamic(
     loading: () => (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-green-200 border-t-green-600" />
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-neutral-200 border-t-neutral-800" />
           <p className="text-sm text-gray-500">Loading rental details...</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function RentalDetailPage() {
       <div className="mx-auto max-w-7xl px-4 py-4">
         <Link
           href="/book"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-green-600"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-neutral-800"
         >
           <ChevronLeft className="h-4 w-4" />
           Back to all rentals
@@ -51,7 +51,7 @@ export default function RentalDetailPage() {
         dealerId={dealerId}
         rentalId={rentalId}
         showReviews
-        primaryColor="#16a34a"
+        primaryColor="#121212"
       />
     </div>
   );

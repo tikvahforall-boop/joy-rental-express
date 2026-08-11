@@ -35,7 +35,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               error ? `${selectId}-error` : helperText ? `${selectId}-helper` : undefined
             }
             className={cn(
-              "flex h-10 w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-10 text-sm focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:opacity-50",
+              "flex h-10 w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-10 text-sm focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:opacity-50",
               error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
               className
             )}

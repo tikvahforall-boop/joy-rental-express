@@ -17,7 +17,7 @@ export function WheelbaseListing({
   dealerId,
   rentalId,
   showReviews,
-  primaryColor = "#16a34a",
+  primaryColor = "#121212",
   secondaryColor,
   textColor,
   surfaceColor,

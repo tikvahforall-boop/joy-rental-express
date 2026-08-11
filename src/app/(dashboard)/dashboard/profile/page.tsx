@@ -195,11 +195,11 @@ export default function ProfilePage() {
                 className="h-20 w-20 rounded-full object-cover"
               />
             ) : (
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-xl font-bold text-green-700">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-neutral-100 text-xl font-bold text-neutral-900">
                 {getInitials(fullName || "U")}
               </div>
             )}
-            <button className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-green-600 text-white transition-colors hover:bg-green-700">
+            <button className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-neutral-800 text-white transition-colors hover:bg-neutral-900">
               <Camera className="h-4 w-4" />
             </button>
           </div>
@@ -270,7 +270,7 @@ export default function ProfilePage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors hover:border-green-400">
+          <div className="rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors hover:border-neutral-400">
             <Upload className="mx-auto mb-3 h-8 w-8 text-gray-400" />
             <p className="text-sm font-medium text-gray-700">
               Click to upload or drag and drop
@@ -301,7 +301,7 @@ export default function ProfilePage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors hover:border-green-400">
+          <div className="rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors hover:border-neutral-400">
             <Upload className="mx-auto mb-3 h-8 w-8 text-gray-400" />
             <p className="text-sm font-medium text-gray-700">
               Click to upload or drag and drop
@@ -321,7 +321,7 @@ export default function ProfilePage() {
           Save Changes
         </Button>
         {saved && (
-          <div className="flex items-center gap-1.5 text-sm font-medium text-green-600">
+          <div className="flex items-center gap-1.5 text-sm font-medium text-neutral-800">
             <CheckCircle2 className="h-4 w-4" />
             Profile updated successfully
           </div>

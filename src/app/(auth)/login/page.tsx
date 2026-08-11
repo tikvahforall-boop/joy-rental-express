@@ -75,7 +75,7 @@ function LoginForm() {
           <div className="flex items-center justify-end">
             <Link
               href="/forgot-password"
-              className="text-sm text-green-600 hover:text-green-700"
+              className="text-sm text-neutral-800 hover:text-neutral-900"
             >
               Forgot password?
             </Link>
@@ -125,7 +125,7 @@ function LoginForm() {
           Don&apos;t have an account?{" "}
           <Link
             href="/register"
-            className="font-medium text-green-600 hover:text-green-700"
+            className="font-medium text-neutral-800 hover:text-neutral-900"
           >
             Sign up
           </Link>

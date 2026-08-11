@@ -127,13 +127,13 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-t-4 border-t-green-500">
+        <Card className="border-t-4 border-t-neutral-500">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm font-medium text-gray-500">
                 Completed Trips
               </CardTitle>
-              <CheckCircle2 className="h-5 w-5 text-green-500" />
+              <CheckCircle2 className="h-5 w-5 text-neutral-500" />
             </div>
           </CardHeader>
           <CardContent>
@@ -143,13 +143,13 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-t-4 border-t-amber-500">
+        <Card className="border-t-4 border-t-neutral-500">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm font-medium text-gray-500">
                 Total Spent
               </CardTitle>
-              <DollarSign className="h-5 w-5 text-amber-500" />
+              <DollarSign className="h-5 w-5 text-neutral-500" />
             </div>
           </CardHeader>
           <CardContent>
@@ -233,8 +233,8 @@ export default function DashboardPage() {
             {recentBookings.map((booking, index) => (
               <div key={booking.id} className="flex gap-4 pb-6">
                 <div className="flex flex-col items-center">
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-100">
-                    <CalendarDays className="h-4 w-4 text-green-600" />
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-neutral-100">
+                    <CalendarDays className="h-4 w-4 text-neutral-800" />
                   </div>
                   {index < recentBookings.length - 1 && (
                     <div className="mt-1 w-px flex-1 bg-gray-200" />

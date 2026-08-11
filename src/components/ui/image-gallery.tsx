@@ -65,7 +65,7 @@ function ImageGallery({
             <button
               type="button"
               onClick={goPrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-gray-700 shadow-sm backdrop-blur-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-green-600"
+              className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-gray-700 shadow-sm backdrop-blur-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-800"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -73,7 +73,7 @@ function ImageGallery({
             <button
               type="button"
               onClick={goNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-gray-700 shadow-sm backdrop-blur-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-green-600"
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-gray-700 shadow-sm backdrop-blur-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-800"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
@@ -92,9 +92,9 @@ function ImageGallery({
               type="button"
               onClick={() => goTo(index)}
               className={cn(
-                "h-16 w-20 shrink-0 overflow-hidden rounded-lg border-2 transition-all focus:outline-none focus:ring-2 focus:ring-green-600",
+                "h-16 w-20 shrink-0 overflow-hidden rounded-lg border-2 transition-all focus:outline-none focus:ring-2 focus:ring-neutral-800",
                 index === activeIndex
-                  ? "border-green-600 opacity-100"
+                  ? "border-neutral-800 opacity-100"
                   : "border-transparent opacity-60 hover:opacity-100"
               )}
               aria-label={`View image ${index + 1}`}

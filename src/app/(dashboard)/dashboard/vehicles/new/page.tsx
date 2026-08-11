@@ -246,9 +246,9 @@ export default function NewVehiclePage() {
               className={cn(
                 "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors",
                 step === s.id
-                  ? "bg-green-100 text-green-700"
+                  ? "bg-neutral-100 text-neutral-900"
                   : step > s.id
-                    ? "text-green-600 cursor-pointer hover:bg-green-50"
+                    ? "text-neutral-800 cursor-pointer hover:bg-neutral-50"
                     : "text-gray-400"
               )}
             >
@@ -280,7 +280,7 @@ export default function NewVehiclePage() {
                 <select
                   value={form.make}
                   onChange={(e) => updateForm({ make: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none bg-white"
                 >
                   <option value="">Select make</option>
                   {POPULAR_MAKES.map((m) => (
@@ -299,7 +299,7 @@ export default function NewVehiclePage() {
                   value={form.model}
                   onChange={(e) => updateForm({ model: e.target.value })}
                   placeholder="e.g. Camry, Model 3"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -312,7 +312,7 @@ export default function NewVehiclePage() {
                   onChange={(e) => updateForm({ year: e.target.value })}
                   min="1990"
                   max={new Date().getFullYear() + 1}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -324,7 +324,7 @@ export default function NewVehiclePage() {
                   value={form.trim}
                   onChange={(e) => updateForm({ trim: e.target.value })}
                   placeholder="e.g. SE, Sport, Limited"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
             </div>
@@ -341,7 +341,7 @@ export default function NewVehiclePage() {
                     className={cn(
                       "p-3 rounded-xl border-2 text-center text-sm transition-colors",
                       form.category === cat.value
-                        ? "border-green-600 bg-green-50 text-green-700"
+                        ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                         : "border-gray-200 hover:border-gray-300 text-gray-600"
                     )}
                   >
@@ -363,7 +363,7 @@ export default function NewVehiclePage() {
                   onChange={(e) => updateForm({ seats: e.target.value })}
                   min="1"
                   max="15"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -373,7 +373,7 @@ export default function NewVehiclePage() {
                 <select
                   value={form.transmission}
                   onChange={(e) => updateForm({ transmission: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none bg-white"
                 >
                   {TRANSMISSION_TYPES.map((t) => (
                     <option key={t.value} value={t.value}>
@@ -389,7 +389,7 @@ export default function NewVehiclePage() {
                 <select
                   value={form.fuelType}
                   onChange={(e) => updateForm({ fuelType: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none bg-white"
                 >
                   {FUEL_TYPES.map((f) => (
                     <option key={f.value} value={f.value}>
@@ -410,7 +410,7 @@ export default function NewVehiclePage() {
                   value={form.color}
                   onChange={(e) => updateForm({ color: e.target.value })}
                   placeholder="e.g. White, Black, Silver"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -422,7 +422,7 @@ export default function NewVehiclePage() {
                   value={form.mileage}
                   onChange={(e) => updateForm({ mileage: e.target.value })}
                   placeholder="e.g. 25000"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
             </div>
@@ -436,7 +436,7 @@ export default function NewVehiclePage() {
                 onChange={(e) => updateForm({ description: e.target.value })}
                 rows={4}
                 placeholder="Describe your vehicle, its condition, and what makes it special..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none resize-none"
               />
             </div>
           </div>
@@ -456,7 +456,7 @@ export default function NewVehiclePage() {
                 (label) => (
                   <div
                     key={label}
-                    className="aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center gap-2 hover:border-green-500 hover:bg-green-50 transition-colors cursor-pointer"
+                    className="aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center gap-2 hover:border-neutral-500 hover:bg-neutral-50 transition-colors cursor-pointer"
                   >
                     <Upload className="w-6 h-6 text-gray-400" />
                     <span className="text-xs text-gray-500">{label}</span>
@@ -486,7 +486,7 @@ export default function NewVehiclePage() {
                   value={form.city}
                   onChange={(e) => updateForm({ city: e.target.value })}
                   placeholder="e.g. Los Angeles"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -496,7 +496,7 @@ export default function NewVehiclePage() {
                 <select
                   value={form.state}
                   onChange={(e) => updateForm({ state: e.target.value })}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none bg-white"
                 >
                   <option value="">Select state</option>
                   {US_STATES.map((s) => (
@@ -515,7 +515,7 @@ export default function NewVehiclePage() {
                   value={form.zipCode}
                   onChange={(e) => updateForm({ zipCode: e.target.value })}
                   placeholder="e.g. 90001"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -527,7 +527,7 @@ export default function NewVehiclePage() {
                   value={form.address}
                   onChange={(e) => updateForm({ address: e.target.value })}
                   placeholder="Pickup address"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
             </div>
@@ -548,7 +548,7 @@ export default function NewVehiclePage() {
                   onChange={(e) =>
                     updateForm({ deliveryEnabled: e.target.checked })
                   }
-                  className="w-5 h-5 text-green-600 rounded focus:ring-green-500"
+                  className="w-5 h-5 text-neutral-800 rounded focus:ring-neutral-500"
                 />
               </label>
               {form.deliveryEnabled && (
@@ -564,7 +564,7 @@ export default function NewVehiclePage() {
                         updateForm({ deliveryRadius: e.target.value })
                       }
                       placeholder="e.g. 25"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                     />
                   </div>
                   <div>
@@ -578,7 +578,7 @@ export default function NewVehiclePage() {
                         updateForm({ deliveryFee: e.target.value })
                       }
                       placeholder="e.g. 25"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                     />
                   </div>
                 </div>
@@ -603,7 +603,7 @@ export default function NewVehiclePage() {
                   onChange={(e) => updateForm({ dailyPrice: e.target.value })}
                   placeholder="e.g. 65"
                   min="1"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -615,7 +615,7 @@ export default function NewVehiclePage() {
                   value={form.cleaningFee}
                   onChange={(e) => updateForm({ cleaningFee: e.target.value })}
                   placeholder="e.g. 25"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -631,7 +631,7 @@ export default function NewVehiclePage() {
                   placeholder="e.g. 15"
                   min="0"
                   max="100"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -647,7 +647,7 @@ export default function NewVehiclePage() {
                   placeholder="e.g. 30"
                   min="0"
                   max="100"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
             </div>
@@ -666,7 +666,7 @@ export default function NewVehiclePage() {
                       updateForm({ dailyMileageLimit: e.target.value })
                     }
                     placeholder="Leave blank for unlimited"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                   />
                 </div>
                 <div>
@@ -681,7 +681,7 @@ export default function NewVehiclePage() {
                       updateForm({ extraMileCharge: e.target.value })
                     }
                     placeholder="e.g. 0.45"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                   />
                 </div>
               </div>
@@ -692,7 +692,7 @@ export default function NewVehiclePage() {
               <select
                 value={form.fuelPolicy}
                 onChange={(e) => updateForm({ fuelPolicy: e.target.value })}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none bg-white"
               >
                 <option value="same-level">Return at same level</option>
                 <option value="full-to-full">Full to full</option>
@@ -717,7 +717,7 @@ export default function NewVehiclePage() {
                   value={form.minTripDays}
                   onChange={(e) => updateForm({ minTripDays: e.target.value })}
                   min="1"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
               <div>
@@ -729,7 +729,7 @@ export default function NewVehiclePage() {
                   value={form.maxTripDays}
                   onChange={(e) => updateForm({ maxTripDays: e.target.value })}
                   min="1"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                 />
               </div>
             </div>
@@ -744,7 +744,7 @@ export default function NewVehiclePage() {
                   className={cn(
                     "p-4 rounded-xl border-2 text-left transition-colors",
                     form.bookingMode === "REQUEST"
-                      ? "border-green-600 bg-green-50"
+                      ? "border-neutral-800 bg-neutral-50"
                       : "border-gray-200 hover:border-gray-300"
                   )}
                 >
@@ -760,7 +760,7 @@ export default function NewVehiclePage() {
                   className={cn(
                     "p-4 rounded-xl border-2 text-left transition-colors",
                     form.bookingMode === "INSTANT"
-                      ? "border-green-600 bg-green-50"
+                      ? "border-neutral-800 bg-neutral-50"
                       : "border-gray-200 hover:border-gray-300"
                   )}
                 >
@@ -774,7 +774,7 @@ export default function NewVehiclePage() {
 
             <div className="bg-gray-50 p-4 rounded-xl">
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-green-600 mt-0.5" />
+                <Calendar className="w-5 h-5 text-neutral-800 mt-0.5" />
                 <div>
                   <h3 className="font-medium text-gray-900">
                     Availability Calendar
@@ -805,7 +805,7 @@ export default function NewVehiclePage() {
                     className={cn(
                       "flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-colors text-sm",
                       form.features.includes(feature)
-                        ? "border-green-600 bg-green-50 text-green-700"
+                        ? "border-neutral-800 bg-neutral-50 text-neutral-900"
                         : "border-gray-200 hover:border-gray-300 text-gray-700"
                     )}
                   >
@@ -813,7 +813,7 @@ export default function NewVehiclePage() {
                       type="checkbox"
                       checked={form.features.includes(feature)}
                       onChange={() => toggleFeature(feature)}
-                      className="w-4 h-4 text-green-600 rounded focus:ring-green-500"
+                      className="w-4 h-4 text-neutral-800 rounded focus:ring-neutral-500"
                     />
                     {feature}
                   </label>
@@ -830,7 +830,7 @@ export default function NewVehiclePage() {
                 onChange={(e) => updateForm({ guestRules: e.target.value })}
                 rows={3}
                 placeholder="e.g. No smoking, no pets, return with same fuel level..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none resize-none"
               />
             </div>
           </div>
@@ -866,7 +866,7 @@ export default function NewVehiclePage() {
                   {form.city}, {form.state} {form.zipCode}
                 </p>
                 {form.deliveryEnabled && (
-                  <p className="text-sm text-green-600">
+                  <p className="text-sm text-neutral-800">
                     Delivery enabled
                     {form.deliveryRadius
                       ? ` (${form.deliveryRadius} mile radius)`
@@ -904,7 +904,7 @@ export default function NewVehiclePage() {
                     {form.features.map((f) => (
                       <span
                         key={f}
-                        className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full"
+                        className="bg-neutral-100 text-neutral-900 text-xs px-2 py-1 rounded-full"
                       >
                         {f}
                       </span>
@@ -914,8 +914,8 @@ export default function NewVehiclePage() {
               )}
             </div>
 
-            <div className="bg-amber-50 p-4 rounded-xl">
-              <div className="flex gap-2 text-sm text-amber-700">
+            <div className="bg-neutral-50 p-4 rounded-xl">
+              <div className="flex gap-2 text-sm text-neutral-700">
                 <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span>
                   Your listing will be submitted for review. Our team typically
@@ -953,7 +953,7 @@ export default function NewVehiclePage() {
               className={cn(
                 "flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors",
                 canProceed()
-                  ? "bg-green-600 hover:bg-green-700"
+                  ? "bg-neutral-800 hover:bg-neutral-900"
                   : "bg-gray-300 cursor-not-allowed"
               )}
             >
@@ -968,7 +968,7 @@ export default function NewVehiclePage() {
                 "flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-white transition-colors",
                 submitting
                   ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700"
+                  : "bg-neutral-800 hover:bg-neutral-900"
               )}
             >
               {submitting ? (

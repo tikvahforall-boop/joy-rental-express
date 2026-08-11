@@ -45,7 +45,7 @@ export function SearchBar() {
             placeholder="City, airport, or address"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm placeholder:text-gray-400 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+            className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm placeholder:text-gray-400 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export function SearchBar() {
               type="date"
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
-              className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+              className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
             />
           </div>
         </div>
@@ -70,7 +70,7 @@ export function SearchBar() {
               type="date"
               value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
-              className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-green-600 focus:outline-none focus:ring-2 focus:ring-green-600/20"
+              className="h-10 w-full rounded-lg border border-gray-300 bg-white pl-10 pr-3 text-sm text-gray-700 focus:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-800/20"
             />
           </div>
         </div>

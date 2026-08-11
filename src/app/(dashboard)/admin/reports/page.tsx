@@ -121,7 +121,7 @@ export default function AdminReportsPage() {
                         <div className="flex-1">
                           <div className="h-6 rounded-full bg-gray-100">
                             <div
-                              className="flex h-6 items-center justify-end rounded-full bg-green-500 px-2 text-xs font-medium text-white"
+                              className="flex h-6 items-center justify-end rounded-full bg-neutral-500 px-2 text-xs font-medium text-white"
                               style={{ width: `${Math.max(pct, 8)}%` }}
                             >
                               {count}
@@ -150,7 +150,7 @@ export default function AdminReportsPage() {
                         <div className="flex-1">
                           <div className="h-6 rounded-full bg-gray-100">
                             <div
-                              className="flex h-6 items-center justify-end rounded-full bg-amber-500 px-2 text-xs font-medium text-white"
+                              className="flex h-6 items-center justify-end rounded-full bg-neutral-500 px-2 text-xs font-medium text-white"
                               style={{ width: `${Math.max(pct, 12)}%` }}
                             >
                               {formatCurrency(item.revenue)}
@@ -192,9 +192,9 @@ function MetricCard({
 }) {
   const colors: Record<string, string> = {
     blue: "bg-blue-50 text-blue-600",
-    green: "bg-green-50 text-green-600",
+    green: "bg-neutral-50 text-neutral-800",
     purple: "bg-purple-50 text-purple-600",
-    amber: "bg-amber-50 text-amber-600",
+    amber: "bg-neutral-50 text-neutral-600",
   };
 
   return (

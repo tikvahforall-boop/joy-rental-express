@@ -78,7 +78,7 @@ function DialogHeader({ children, onClose, className }: DialogHeaderProps) {
         <button
           type="button"
           onClick={onClose}
-          className="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-600"
+          className="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-neutral-800"
           aria-label="Close dialog"
         >
           <X className="h-5 w-5" />

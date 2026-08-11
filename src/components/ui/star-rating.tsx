@@ -30,7 +30,7 @@ function StarRating({
       stars.push(
         <Star
           key={i}
-          className={cn(sizeMap[size], "fill-amber-400 text-amber-400")}
+          className={cn(sizeMap[size], "fill-neutral-400 text-neutral-400")}
         />
       );
     } else if (rating >= i - 0.5) {
@@ -38,7 +38,7 @@ function StarRating({
         <span key={i} className="relative">
           <Star className={cn(sizeMap[size], "text-gray-300")} />
           <StarHalf
-            className={cn(sizeMap[size], "absolute left-0 top-0 fill-amber-400 text-amber-400")}
+            className={cn(sizeMap[size], "absolute left-0 top-0 fill-neutral-400 text-neutral-400")}
           />
         </span>
       );

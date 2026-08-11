@@ -10,13 +10,13 @@ import { Avatar } from "@/components/ui/avatar";
 import type { VehicleResult } from "@/lib/services/vehicle-types";
 
 const categoryGradients: Record<string, string> = {
-  economy: "from-green-400 to-emerald-600",
+  economy: "from-neutral-400 to-neutral-800",
   suv: "from-blue-400 to-indigo-600",
-  luxury: "from-amber-400 to-yellow-600",
+  luxury: "from-neutral-400 to-yellow-600",
   electric: "from-cyan-400 to-teal-600",
   sports: "from-red-400 to-rose-600",
   van: "from-purple-400 to-violet-600",
-  truck: "from-orange-400 to-amber-600",
+  truck: "from-orange-400 to-neutral-600",
   family: "from-pink-400 to-fuchsia-600",
 };
 
@@ -90,7 +90,7 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
 
         {vehicle.instantBook && (
           <div className="absolute left-3 top-3">
-            <Badge className="bg-amber-500 text-white border-0">
+            <Badge className="bg-neutral-500 text-white border-0">
               <Zap className="mr-1 h-3 w-3" />
               Instant Book
             </Badge>
@@ -100,13 +100,13 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
 
       <div className="p-4">
         <div className="mb-1 flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+          <h3 className="font-semibold text-gray-900 group-hover:text-neutral-800 transition-colors">
             {vehicle.year} {vehicle.make} {vehicle.model}
           </h3>
         </div>
 
         <div className="mb-2 flex items-center gap-1">
-          <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+          <Star className="h-4 w-4 fill-neutral-400 text-neutral-400" />
           <span className="text-sm font-medium text-gray-900">{vehicle.rating.toFixed(1)}</span>
           <span className="text-sm text-gray-500">({vehicle.reviewCount})</span>
         </div>

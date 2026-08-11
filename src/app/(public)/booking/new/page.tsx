@@ -85,9 +85,9 @@ function StepIndicator({
             className={cn(
               "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
               currentStep === step.id
-                ? "bg-green-100 text-green-700"
+                ? "bg-neutral-100 text-neutral-900"
                 : currentStep > step.id
-                  ? "text-green-600"
+                  ? "text-neutral-800"
                   : "text-gray-400"
             )}
           >
@@ -271,7 +271,7 @@ function BookingContent() {
         <h1 className="text-2xl font-bold text-gray-900 mb-2">{error}</h1>
         <Link
           href="/search"
-          className="inline-flex items-center gap-2 mt-4 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700"
+          className="inline-flex items-center gap-2 mt-4 bg-neutral-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-neutral-900"
         >
           Browse vehicles
         </Link>
@@ -288,7 +288,7 @@ function BookingContent() {
       <div className="max-w-4xl mx-auto">
         <Link
           href={`/vehicles/${vehicle.slug}`}
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-green-600 mb-6"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-neutral-800 mb-6"
         >
           <ChevronLeft className="w-4 h-4" />
           Back to listing
@@ -318,7 +318,7 @@ function BookingContent() {
                         value={pickupDate}
                         min={today}
                         onChange={(e) => setPickupDate(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                       />
                     </div>
                     <div>
@@ -330,7 +330,7 @@ function BookingContent() {
                         value={returnDate}
                         min={pickupDate || today}
                         onChange={(e) => setReturnDate(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                       />
                     </div>
                   </div>
@@ -346,11 +346,11 @@ function BookingContent() {
                       className={cn(
                         "p-4 rounded-xl border-2 text-left transition-colors",
                         pickupType === "pickup"
-                          ? "border-green-600 bg-green-50"
+                          ? "border-neutral-800 bg-neutral-50"
                           : "border-gray-200 hover:border-gray-300"
                       )}
                     >
-                      <MapPin className="w-5 h-5 text-green-600 mb-2" />
+                      <MapPin className="w-5 h-5 text-neutral-800 mb-2" />
                       <div className="font-medium text-gray-900">Pick up at location</div>
                       <div className="text-sm text-gray-500">
                         {vehicle.city}, {vehicle.state}
@@ -362,11 +362,11 @@ function BookingContent() {
                         className={cn(
                           "p-4 rounded-xl border-2 text-left transition-colors",
                           pickupType === "delivery"
-                            ? "border-green-600 bg-green-50"
+                            ? "border-neutral-800 bg-neutral-50"
                             : "border-gray-200 hover:border-gray-300"
                         )}
                       >
-                        <Car className="w-5 h-5 text-green-600 mb-2" />
+                        <Car className="w-5 h-5 text-neutral-800 mb-2" />
                         <div className="font-medium text-gray-900">Deliver to me</div>
                         <div className="text-sm text-gray-500">
                           {vehicle.deliveryFee
@@ -386,7 +386,7 @@ function BookingContent() {
                         value={deliveryAddress}
                         onChange={(e) => setDeliveryAddress(e.target.value)}
                         placeholder="Enter your delivery address"
-                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                        className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
                       />
                     </div>
                   )}
@@ -404,7 +404,7 @@ function BookingContent() {
                           className={cn(
                             "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-colors",
                             selectedAddOns.includes(addon.id)
-                              ? "border-green-600 bg-green-50"
+                              ? "border-neutral-800 bg-neutral-50"
                               : "border-gray-200 hover:border-gray-300"
                           )}
                         >
@@ -421,7 +421,7 @@ function BookingContent() {
                                   );
                                 }
                               }}
-                              className="w-4 h-4 text-green-600 rounded focus:ring-green-500"
+                              className="w-4 h-4 text-neutral-800 rounded focus:ring-neutral-500"
                             />
                             <div>
                               <div className="font-medium text-gray-900">
@@ -450,7 +450,7 @@ function BookingContent() {
                     className={cn(
                       "flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-colors",
                       pickupDate && returnDate
-                        ? "bg-green-600 hover:bg-green-700"
+                        ? "bg-neutral-800 hover:bg-neutral-900"
                         : "bg-gray-300 cursor-not-allowed"
                     )}
                   >
@@ -476,7 +476,7 @@ function BookingContent() {
                       className={cn(
                         "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-colors",
                         !insuranceTier
-                          ? "border-green-600 bg-green-50"
+                          ? "border-neutral-800 bg-neutral-50"
                           : "border-gray-200 hover:border-gray-300"
                       )}
                     >
@@ -486,7 +486,7 @@ function BookingContent() {
                           name="insurance"
                           checked={!insuranceTier}
                           onChange={() => setInsuranceTier("")}
-                          className="w-4 h-4 text-green-600 focus:ring-green-500"
+                          className="w-4 h-4 text-neutral-800 focus:ring-neutral-500"
                         />
                         <div>
                           <div className="font-medium text-gray-900">
@@ -514,7 +514,7 @@ function BookingContent() {
                           className={cn(
                             "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-colors",
                             insuranceTier === tier.id
-                              ? "border-green-600 bg-green-50"
+                              ? "border-neutral-800 bg-neutral-50"
                               : "border-gray-200 hover:border-gray-300"
                           )}
                         >
@@ -524,7 +524,7 @@ function BookingContent() {
                               name="insurance"
                               checked={insuranceTier === tier.id}
                               onChange={() => setInsuranceTier(tier.id)}
-                              className="w-4 h-4 text-green-600 focus:ring-green-500"
+                              className="w-4 h-4 text-neutral-800 focus:ring-neutral-500"
                             />
                             <div>
                               <div className="flex items-center gap-2">
@@ -532,7 +532,7 @@ function BookingContent() {
                                   {tier.name}
                                 </span>
                                 {tier.id === "premium" && (
-                                  <span className="bg-green-100 text-green-700 text-xs font-medium px-2 py-0.5 rounded-full">
+                                  <span className="bg-neutral-100 text-neutral-900 text-xs font-medium px-2 py-0.5 rounded-full">
                                     Recommended
                                   </span>
                                 )}
@@ -553,8 +553,8 @@ function BookingContent() {
                     })}
                   </div>
 
-                  <div className="mt-4 p-3 bg-amber-50 rounded-lg">
-                    <div className="flex gap-2 text-xs text-amber-700">
+                  <div className="mt-4 p-3 bg-neutral-50 rounded-lg">
+                    <div className="flex gap-2 text-xs text-neutral-700">
                       <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
                       <span>
                         Protection plans are provided through our insurance
@@ -575,7 +575,7 @@ function BookingContent() {
                   </button>
                   <button
                     onClick={() => setStep(3)}
-                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-green-600 hover:bg-green-700 transition-colors"
+                    className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-neutral-800 hover:bg-neutral-900 transition-colors"
                   >
                     Continue
                     <ChevronRight className="w-4 h-4" />
@@ -632,7 +632,7 @@ function BookingContent() {
                         setPromoCode(e.target.value.toUpperCase())
                       }
                       placeholder="Enter code"
-                      className="flex-1 border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none text-sm"
+                      className="flex-1 border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none text-sm"
                     />
                     <button className="px-4 py-2.5 bg-gray-100 text-gray-700 rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
                       Apply
@@ -649,13 +649,13 @@ function BookingContent() {
                       type="checkbox"
                       checked={agreedToTerms}
                       onChange={(e) => setAgreedToTerms(e.target.checked)}
-                      className="w-4 h-4 mt-1 text-green-600 rounded focus:ring-green-500"
+                      className="w-4 h-4 mt-1 text-neutral-800 rounded focus:ring-neutral-500"
                     />
                     <span className="text-sm text-gray-600">
                       I agree to the{" "}
                       <Link
                         href="/terms"
-                        className="text-green-600 hover:underline"
+                        className="text-neutral-800 hover:underline"
                         target="_blank"
                       >
                         Terms of Service
@@ -663,7 +663,7 @@ function BookingContent() {
                       ,{" "}
                       <Link
                         href="/privacy"
-                        className="text-green-600 hover:underline"
+                        className="text-neutral-800 hover:underline"
                         target="_blank"
                       >
                         Privacy Policy
@@ -671,7 +671,7 @@ function BookingContent() {
                       , and{" "}
                       <Link
                         href="/cancellation-policy"
-                        className="text-green-600 hover:underline"
+                        className="text-neutral-800 hover:underline"
                         target="_blank"
                       >
                         Cancellation Policy
@@ -704,7 +704,7 @@ function BookingContent() {
                     className={cn(
                       "flex items-center gap-2 px-8 py-3 rounded-xl font-semibold text-white transition-colors",
                       agreedToTerms && !submitting
-                        ? "bg-green-600 hover:bg-green-700"
+                        ? "bg-neutral-800 hover:bg-neutral-900"
                         : "bg-gray-300 cursor-not-allowed"
                     )}
                   >
@@ -727,7 +727,7 @@ function BookingContent() {
           <div className="hidden lg:block">
             <div className="bg-white border border-gray-200 rounded-2xl p-6 sticky top-24">
               <div className="flex gap-4 mb-4 pb-4 border-b border-gray-100">
-                <div className="w-20 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-20 h-14 bg-gradient-to-br from-neutral-400 to-neutral-800 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Car className="w-8 h-8 text-white/60" />
                 </div>
                 <div>
@@ -737,7 +737,7 @@ function BookingContent() {
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     {vehicle.host.hostProfile?.avgRating && (
                       <span className="flex items-center gap-0.5">
-                        <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                        <Star className="w-3 h-3 fill-neutral-400 text-neutral-400" />
                         {vehicle.host.hostProfile.avgRating.toFixed(1)}
                       </span>
                     )}
@@ -760,7 +760,7 @@ function BookingContent() {
                     </span>
                   </div>
                   {estimate.weeklyDiscount > 0 && (
-                    <div className="flex justify-between text-green-600">
+                    <div className="flex justify-between text-neutral-800">
                       <span>Weekly discount</span>
                       <span>-{formatCurrency(estimate.weeklyDiscount)}</span>
                     </div>
