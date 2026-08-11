@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import {
@@ -25,6 +25,76 @@ const NAV_LINKS = [
   { href: "/become-a-host", label: "Become a Host" },
 ];
 
+function AnimatedLogo() {
+  const [phase, setPhase] = useState<"idle" | "drive-out" | "drive-back">("idle");
+
+  useEffect(() => {
+    const timer = setTimeout(() => setPhase("drive-out"), 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (phase === "drive-out") {
+      const t = setTimeout(() => setPhase("drive-back"), 1000);
+      return () => clearTimeout(t);
+    }
+    if (phase === "drive-back") {
+      const t = setTimeout(() => setPhase("idle"), 1200);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase === "idle") {
+      const t = setTimeout(() => setPhase("drive-out"), 8000);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
+  return (
+    <Link href="/" className="relative flex items-center gap-2" style={{ minWidth: 250 }}>
+      <span
+        className="absolute left-0 inline-flex shrink-0"
+        style={{
+          transition: "transform 0.8s",
+          transform:
+            phase === "drive-out"
+              ? "translateX(230px)"
+              : "translateX(0px)",
+          transitionTimingFunction:
+            phase === "drive-out"
+              ? "cubic-bezier(0.4, 0, 0.2, 1)"
+              : "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }}
+      >
+        <Car
+          className="h-7 w-7 text-neutral-800"
+          style={{
+            animation:
+              phase === "drive-out" || phase === "drive-back"
+                ? "carBounce 0.12s ease-in-out infinite"
+                : "none",
+          }}
+        />
+      </span>
+      <span
+        className="ml-9 text-lg font-bold text-gray-900 whitespace-nowrap"
+        style={{
+          transition: "opacity 0.4s, transform 0.5s",
+          opacity: phase === "drive-out" ? 0 : 1,
+          transform:
+            phase === "drive-out"
+              ? "translateY(8px) scale(0.95)"
+              : "translateY(0) scale(1)",
+          transitionDelay: phase === "drive-back" ? "0.4s" : "0s",
+        }}
+      >
+        Mile High Car Rental
+      </span>
+    </Link>
+  );
+}
+
 export default function Header() {
   const { data: session, status } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,12 +103,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <Car className="h-7 w-7 text-neutral-800" />
-          <span className="text-lg font-bold text-gray-900">
-            Mile High Car Rental
-          </span>
-        </Link>
+        <AnimatedLogo />
 
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
