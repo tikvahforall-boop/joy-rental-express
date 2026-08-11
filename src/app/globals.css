@@ -102,3 +102,8 @@ body {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-2px); }
 }
+
+@keyframes slideProgress {
+  from { width: 0; }
+  to { width: 100%; }
+}

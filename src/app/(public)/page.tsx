@@ -10,32 +10,38 @@ import {
   CalendarCheck,
   Car,
   Star,
+  Mountain,
+  MapPin,
 } from "lucide-react";
 import { APP_NAME, VEHICLE_CATEGORIES } from "@/lib/constants";
 import { getFeaturedVehicles } from "@/lib/services/vehicle-service";
-import { HeroSearch } from "@/components/search/hero-search";
 import { VehicleCard } from "@/components/vehicles/vehicle-card";
 import { Button } from "@/components/ui/button";
+import { HeroSlideshow } from "@/components/home/hero-slideshow";
+import { ColoradoDestinations } from "@/components/home/colorado-destinations";
 import { HomeFaq } from "./home-faq";
 
 const TESTIMONIALS = [
   {
     name: "Jessica M.",
-    location: "San Francisco, CA",
+    location: "Denver, CO",
     rating: 5,
-    text: "Rented a Tesla for a weekend trip down the coast. The booking process was seamless and the car was spotless. Will definitely use Mile High Car Rental again!",
+    text: "Rented an SUV for a weekend trip to Rocky Mountain National Park. Trail Ridge Road was incredible! Booking was seamless and the car handled mountain roads perfectly.",
+    trip: "Rocky Mountain National Park",
   },
   {
     name: "Marcus T.",
-    location: "Austin, TX",
+    location: "Colorado Springs, CO",
     rating: 5,
-    text: "Needed a truck for a weekend move and found one at a great price. Pickup was smooth, the vehicle was clean, and the whole process was hassle-free.",
+    text: "Needed a 4WD for a ski trip to Vail. Great selection, fair prices, and the Denver airport pickup was super convenient. Way better than the big rental agencies.",
+    trip: "Vail Ski Trip",
   },
   {
     name: "Priya R.",
-    location: "New York, NY",
+    location: "Boulder, CO",
     rating: 5,
-    text: "So much better than traditional rental agencies. Found a great car at half the price, and the host was incredibly helpful with local recommendations.",
+    text: "Found a convertible for a drive through the Maroon Bells area. The fall colors were stunning! Mile High Car Rental made the whole experience effortless.",
+    trip: "Maroon Bells Scenic Drive",
   },
 ];
 
@@ -44,19 +50,19 @@ const HOW_IT_WORKS = [
     icon: Search,
     title: "Search",
     description:
-      "Browse thousands of vehicles by location, dates, and type. Filter by features, price, and more to find your perfect match.",
+      "Browse vehicles by location, dates, and type. Filter by features, price, and more to find your perfect match.",
   },
   {
     icon: CalendarCheck,
     title: "Book",
     description:
-      "Reserve instantly or send a booking request. Secure checkout with flexible cancellation options and insurance coverage.",
+      "Reserve instantly with secure checkout. Flexible cancellation options and insurance coverage included.",
   },
   {
     icon: Car,
     title: "Drive",
     description:
-      "Pick up from the host or get it delivered. Enjoy your trip with 24/7 roadside assistance and support.",
+      "Pick up from the host or get it delivered. Enjoy your trip with 24/7 roadside assistance.",
   },
 ];
 
@@ -83,24 +89,32 @@ const TRUST_ITEMS = [
   },
 ];
 
+const ROAD_TRIPS = [
+  {
+    name: "Peak to Peak Scenic Byway",
+    duration: "Half Day",
+    distance: "55 miles",
+  },
+  {
+    name: "Million Dollar Highway",
+    duration: "Full Day",
+    distance: "305 miles",
+  },
+  {
+    name: "Trail Ridge Road",
+    duration: "Half Day",
+    distance: "48 miles",
+  },
+];
+
 export default async function HomePage() {
   const featuredVehicles = await getFeaturedVehicles();
 
   return (
     <main>
-      <section className="relative overflow-hidden bg-gradient-to-br from-neutral-800 via-neutral-900 to-black px-4 pb-20 pt-16 md:pb-28 md:pt-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent)]" />
-        <div className="relative mx-auto max-w-5xl text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
-            Find Your Perfect Ride
-          </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-100 md:text-xl">
-            Rent from trusted hosts or our own fleet. Cars available across the US.
-          </p>
-          <HeroSearch />
-        </div>
-      </section>
+      <HeroSlideshow />
 
+      {/* Browse by Category */}
       <section className="px-4 py-12 md:py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-6 text-2xl font-bold text-gray-900">Browse by Category</h2>
@@ -119,7 +133,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 px-4 py-12 md:py-16">
+      {/* Explore Colorado */}
+      <section className="bg-gray-50 px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-3 flex items-center gap-2 text-neutral-600">
+            <Mountain className="h-5 w-5" />
+            <span className="text-sm font-semibold uppercase tracking-wider">
+              Explore Colorado
+            </span>
+          </div>
+          <h2 className="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+            Popular Destinations
+          </h2>
+          <p className="mb-8 max-w-xl text-gray-500">
+            From the towering Rockies to the red desert canyons, find the perfect car for every Colorado adventure.
+          </p>
+          <ColoradoDestinations />
+        </div>
+      </section>
+
+      {/* Popular Cars */}
+      <section className="px-4 py-12 md:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Popular Cars Near You</h2>
@@ -138,6 +172,46 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Scenic Road Trips Banner */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80&auto=format&fit=crop)",
+          }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative px-4 py-20 md:py-28">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
+              <Car className="h-4 w-4 text-white" />
+              <span className="text-sm font-medium text-white">Scenic Drives</span>
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+              Colorado&apos;s Best Road Trips
+            </h2>
+            <p className="mb-8 max-w-xl text-lg text-white/80">
+              Hit the open road and experience the most breathtaking drives in America. Every route is an adventure.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {ROAD_TRIPS.map((trip) => (
+                <div
+                  key={trip.name}
+                  className="rounded-xl border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-sm"
+                >
+                  <p className="font-semibold text-white">{trip.name}</p>
+                  <p className="mt-1 text-sm text-white/70">
+                    {trip.duration} &middot; {trip.distance}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
       <section className="px-4 py-16 md:py-20">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
@@ -168,7 +242,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 md:py-20">
+      {/* Trust & Safety */}
+      <section className="bg-gray-50 px-4 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl">
             Trust & Safety
@@ -195,13 +270,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gray-50 px-4 py-16 md:py-20">
+      {/* Testimonials */}
+      <section className="px-4 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl">
-            What Our Community Says
+            What Our Renters Say
           </h2>
           <p className="mb-12 text-center text-gray-500">
-            Trusted by thousands of renters and hosts
+            Trusted by thousands of travelers across Colorado
           </p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((testimonial) => (
@@ -209,13 +285,19 @@ export default async function HomePage() {
                 key={testimonial.name}
                 className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
               >
-                <div className="mb-3 flex gap-0.5">
-                  {Array.from({ length: testimonial.rating }, (_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-neutral-400 text-neutral-400"
-                    />
-                  ))}
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: testimonial.rating }, (_, i) => (
+                      <Star
+                        key={i}
+                        className="h-4 w-4 fill-amber-400 text-amber-400"
+                      />
+                    ))}
+                  </div>
+                  <span className="flex items-center gap-1 text-xs text-gray-400">
+                    <MapPin className="h-3 w-3" />
+                    {testimonial.trip}
+                  </span>
                 </div>
                 <p className="mb-4 text-sm leading-relaxed text-gray-600">
                   &ldquo;{testimonial.text}&rdquo;
@@ -232,7 +314,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 md:py-20">
+      {/* FAQ */}
+      <section className="bg-gray-50 px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl">
             Frequently Asked Questions
@@ -244,34 +327,45 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-neutral-800 px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-            Ready to Hit the Road?
-          </h2>
-          <p className="mb-8 text-lg text-neutral-100">
-            Join thousands of happy renters and find your perfect ride today.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/search">
-              <Button
-                size="lg"
-                className="bg-white text-neutral-800 hover:bg-neutral-50"
-              >
-                <Search className="mr-2 h-4 w-4" />
-                Browse Cars
-              </Button>
-            </Link>
-            <Link href="/book">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-neutral-900"
-              >
-                <CalendarCheck className="mr-2 h-4 w-4" />
-                Book Now
-              </Button>
-            </Link>
+      {/* CTA with Colorado backdrop */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80&auto=format&fit=crop)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50" />
+        <div className="relative px-4 py-20 md:py-28">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
+              Ready to Explore Colorado?
+            </h2>
+            <p className="mb-8 text-lg text-white/80">
+              Find the perfect ride for your next mountain adventure. Book today and hit the open road.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link href="/search">
+                <Button
+                  size="lg"
+                  className="bg-white text-neutral-800 hover:bg-neutral-50"
+                >
+                  <Search className="mr-2 h-4 w-4" />
+                  Browse Cars
+                </Button>
+              </Link>
+              <Link href="/book">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white text-white hover:bg-white/10"
+                >
+                  <CalendarCheck className="mr-2 h-4 w-4" />
+                  Book Now
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
