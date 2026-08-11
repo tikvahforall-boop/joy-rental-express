@@ -22,7 +22,7 @@ const NAV_LINKS = [
   { href: "/search", label: "Search Cars" },
   { href: "/book", label: "Book Online" },
   { href: "/how-it-works", label: "How it Works" },
-  { href: "/become-a-host", label: "Become a Host" },
+  { href: "/about", label: "About" },
 ];
 
 function AnimatedLogo() {

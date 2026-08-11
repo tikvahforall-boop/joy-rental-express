@@ -10,9 +10,6 @@ import {
   CalendarCheck,
   Car,
   Star,
-  DollarSign,
-  TrendingUp,
-  Clock,
 } from "lucide-react";
 import { APP_NAME, VEHICLE_CATEGORIES } from "@/lib/constants";
 import { getFeaturedVehicles } from "@/lib/services/vehicle-service";
@@ -32,7 +29,7 @@ const TESTIMONIALS = [
     name: "Marcus T.",
     location: "Austin, TX",
     rating: 5,
-    text: "As a host, I've earned over $1,200 a month renting out my SUV when I'm not using it. The platform handles everything from insurance to payments.",
+    text: "Needed a truck for a weekend move and found one at a great price. Pickup was smooth, the vehicle was clean, and the whole process was hassle-free.",
   },
   {
     name: "Priya R.",
@@ -171,46 +168,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-neutral-500 to-neutral-600 px-4 py-16 md:py-20">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 md:flex-row">
-          <div className="flex-1 text-center md:text-left">
-            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-              Turn Your Car Into a Money Maker
-            </h2>
-            <p className="mb-6 text-lg text-neutral-100">
-              List your vehicle on {APP_NAME} and earn up to $1,200/month. We handle
-              insurance, payments, and customer support so you can sit back and earn.
-            </p>
-            <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <div className="flex items-center gap-3 text-white">
-                <DollarSign className="h-5 w-5 shrink-0" />
-                <span className="text-sm font-medium">Set your own price</span>
-              </div>
-              <div className="flex items-center gap-3 text-white">
-                <Shield className="h-5 w-5 shrink-0" />
-                <span className="text-sm font-medium">Insurance included</span>
-              </div>
-              <div className="flex items-center gap-3 text-white">
-                <TrendingUp className="h-5 w-5 shrink-0" />
-                <span className="text-sm font-medium">Earn passively</span>
-              </div>
-            </div>
-            <Link href="/become-a-host">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white bg-white text-neutral-600 hover:bg-neutral-50 hover:text-neutral-700"
-              >
-                Become a Host
-              </Button>
-            </Link>
-          </div>
-          <div className="flex h-48 w-48 items-center justify-center rounded-full bg-neutral-400/30 md:h-64 md:w-64">
-            <span className="text-7xl md:text-8xl">🚗</span>
-          </div>
-        </div>
-      </section>
-
       <section className="px-4 py-16 md:py-20">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-4 text-center text-2xl font-bold text-gray-900 md:text-3xl">
@@ -305,14 +262,14 @@ export default async function HomePage() {
                 Browse Cars
               </Button>
             </Link>
-            <Link href="/become-a-host">
+            <Link href="/book">
               <Button
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-neutral-900"
               >
-                <Clock className="mr-2 h-4 w-4" />
-                List Your Car
+                <CalendarCheck className="mr-2 h-4 w-4" />
+                Book Now
               </Button>
             </Link>
           </div>
