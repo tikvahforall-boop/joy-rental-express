@@ -53,7 +53,21 @@ export async function PATCH(
     const vehicle = await prisma.vehicle.findUnique({ where: { id } });
     if (!vehicle) return errorResponse("Vehicle not found", 404);
 
-    const { features, primaryImageId, ...vehicleData } = body;
+    const { features, primaryImageId, id: _id, images: _imgs, ...rest } = body;
+
+    const allowedFields = [
+      "make", "model", "year", "trim", "vin", "licensePlate", "color",
+      "category", "description", "seats", "doors", "fuelType", "transmission",
+      "drivetrain", "mileage", "electricRange", "address", "city", "state",
+      "zipCode", "dailyPrice", "weeklyDiscount", "monthlyDiscount",
+      "cleaningFee", "deliveryFee", "dailyMileageLimit", "extraMileCharge",
+      "bookingMode", "minTripDays", "maxTripDays", "instantBookEligible",
+      "deliveryEnabled", "deliveryRadius",
+    ];
+    const vehicleData: Record<string, unknown> = {};
+    for (const key of allowedFields) {
+      if (key in rest) vehicleData[key] = rest[key];
+    }
 
     if (primaryImageId) {
       await prisma.vehicleImage.updateMany({
