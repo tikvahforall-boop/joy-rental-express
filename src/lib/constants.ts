@@ -1,4 +1,5 @@
-export const APP_NAME = "Peak Drive Denver";
+export const APP_NAME = "Peak Drive Rentals";
+export const APP_NAME_ALT = "Peak Drive Denver";
 export const APP_DESCRIPTION =
   "Find and rent the perfect car from trusted hosts or our own fleet.";
 export const CURRENCY = "USD";

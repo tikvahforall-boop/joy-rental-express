@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peak Drive Denver",
+  title: "Peak Drive Rentals | Peak Drive Denver",
   description:
     "Find and rent the perfect car from trusted hosts or our own fleet.",
 };

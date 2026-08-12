@@ -3,8 +3,8 @@ import { INSURANCE_TIERS } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Protection Plans | Peak Drive Denver",
-  description: "Learn about vehicle protection and insurance options available on Peak Drive Denver.",
+  title: "Protection Plans | Peak Drive Rentals",
+  description: "Learn about vehicle protection and insurance options available on Peak Drive Rentals.",
 };
 
 const coverageComparison = [

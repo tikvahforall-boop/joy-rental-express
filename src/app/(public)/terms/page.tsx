@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Peak Drive Denver",
+  title: "Terms of Service | Peak Drive Rentals",
   description:
-    "Read the Terms of Service for Peak Drive Denver car rental marketplace.",
+    "Read the Terms of Service for Peak Drive Rentals car rental marketplace.",
 };
 
 export default function TermsPage() {
@@ -23,12 +23,12 @@ export default function TermsPage() {
               1. Acceptance of Terms
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              By accessing or using the Peak Drive Denver platform, website, or
+              By accessing or using the Peak Drive Rentals platform, website, or
               mobile application (collectively, the "Service"), you agree to be
               bound by these Terms of Service ("Terms"). If you do not agree to
               these Terms, you may not use the Service. These Terms constitute a
               legally binding agreement between you and [COMPANY LEGAL NAME]
-              ("Peak Drive Denver," "we," "us," or "our"). We reserve the right
+              ("Peak Drive Rentals," "we," "us," or "our"). We reserve the right
               to modify these Terms at any time, and your continued use of the
               Service after such modifications constitutes acceptance.
             </p>
@@ -60,7 +60,7 @@ export default function TermsPage() {
               3. The Booking Process
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              Peak Drive Denver operates as a marketplace connecting vehicle
+              Peak Drive Rentals operates as a marketplace connecting vehicle
               hosts with renters. When you submit a booking request, you are
               making an offer to rent a vehicle under the terms specified in the
               listing. For vehicles with instant booking enabled, your booking is
@@ -137,7 +137,7 @@ export default function TermsPage() {
               7. Limitation of Liability
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Peak Drive Denver acts as a marketplace platform and is not a
+              Peak Drive Rentals acts as a marketplace platform and is not a
               party to the rental agreement between hosts and renters. To the
               maximum extent permitted by law, [COMPANY LEGAL NAME] shall not
               be liable for any indirect, incidental, special, consequential,

@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <Car className="h-6 w-6 text-neutral-400" />
-              <span className="text-lg font-bold">Peak Drive Denver</span>
+              <span className="text-lg font-bold">Peak Drive Rentals</span>
             </Link>
             <p className="mt-3 text-sm text-neutral-200">
               Find and rent the perfect car from trusted hosts or our own fleet.
@@ -61,7 +61,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-black pt-8 sm:flex-row">
           <p className="text-sm text-neutral-300">
-            &copy; {new Date().getFullYear()} Peak Drive Denver. All rights
+            &copy; {new Date().getFullYear()} Peak Drive Rentals. All rights
             reserved.
           </p>
           <div className="flex gap-4">

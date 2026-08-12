@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Peak Drive Denver",
+  title: "Privacy Policy | Peak Drive Rentals",
   description:
-    "Learn how Peak Drive Denver collects, uses, and protects your personal information.",
+    "Learn how Peak Drive Rentals collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
               1. Information We Collect
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              [COMPANY LEGAL NAME] ("Peak Drive Denver," "we," "us") collects
+              [COMPANY LEGAL NAME] ("Peak Drive Rentals," "we," "us") collects
               information you provide directly, including your name, email
               address, phone number, date of birth, driver's license details,
               payment information, and profile data. When you list a vehicle, we

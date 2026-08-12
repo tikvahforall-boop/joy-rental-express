@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Peak Drive Denver",
+  title: "Cookie Policy | Peak Drive Rentals",
   description:
-    "Learn about how Peak Drive Denver uses cookies and similar technologies.",
+    "Learn about how Peak Drive Rentals uses cookies and similar technologies.",
 };
 
 const cookieTypes = [

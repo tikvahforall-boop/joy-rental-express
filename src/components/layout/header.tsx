@@ -26,8 +26,11 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
+const BRAND_NAMES = ["Peak Drive Rentals", "Peak Drive Denver"] as const;
+
 function AnimatedLogo() {
   const [phase, setPhase] = useState<"idle" | "drive-out" | "drive-back">("idle");
+  const [nameIndex, setNameIndex] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => setPhase("drive-out"), 2500);
@@ -36,7 +39,10 @@ function AnimatedLogo() {
 
   useEffect(() => {
     if (phase === "drive-out") {
-      const t = setTimeout(() => setPhase("drive-back"), 1000);
+      const t = setTimeout(() => {
+        setNameIndex((i) => (i + 1) % BRAND_NAMES.length);
+        setPhase("drive-back");
+      }, 1000);
       return () => clearTimeout(t);
     }
     if (phase === "drive-back") {
@@ -90,7 +96,7 @@ function AnimatedLogo() {
           transitionDelay: phase === "drive-back" ? "0.4s" : "0s",
         }}
       >
-        Peak Drive Denver
+        {BRAND_NAMES[nameIndex]}
       </span>
     </Link>
   );

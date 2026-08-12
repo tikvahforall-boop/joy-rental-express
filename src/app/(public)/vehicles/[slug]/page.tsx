@@ -391,7 +391,7 @@ export default function VehicleDetailPage() {
             {vehicle.isCompanyOwned && (
               <div className="mt-3 inline-flex items-center gap-1.5 bg-neutral-50 text-neutral-900 px-3 py-1 rounded-full text-sm font-medium">
                 <Shield className="w-4 h-4" />
-                Peak Drive Denver Fleet
+                Peak Drive Rentals Fleet
               </div>
             )}
           </div>

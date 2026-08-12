@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cancellation Policy | Peak Drive Denver",
+  title: "Cancellation Policy | Peak Drive Rentals",
   description:
-    "Understand the cancellation and refund policies for bookings on Peak Drive Denver.",
+    "Understand the cancellation and refund policies for bookings on Peak Drive Rentals.",
 };
 
 const policies = [
@@ -52,7 +52,7 @@ export default function CancellationPolicyPage() {
         <div className="prose prose-gray max-w-none space-y-8">
           <section>
             <p className="text-gray-600 leading-relaxed">
-              We understand plans change. Peak Drive Denver offers three cancellation policy tiers that hosts choose for their listings. The applicable policy is displayed on each listing and at checkout. Service fees are refunded in full for cancellations that qualify for a full refund; otherwise, service fees are non-refundable.
+              We understand plans change. Peak Drive Rentals offers three cancellation policy tiers that hosts choose for their listings. The applicable policy is displayed on each listing and at checkout. Service fees are refunded in full for cancellations that qualify for a full refund; otherwise, service fees are non-refundable.
             </p>
           </section>
 
@@ -176,7 +176,7 @@ export default function CancellationPolicyPage() {
               If a renter does not pick up the vehicle within 2 hours of the scheduled pickup time without contacting the host, the booking may be treated as a no-show and is not eligible for any refund.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              In cases of documented emergencies such as natural disasters, government travel restrictions, or serious illness, Peak Drive Denver may override the standard policy and issue a full refund at its discretion. Supporting documentation may be required.
+              In cases of documented emergencies such as natural disasters, government travel restrictions, or serious illness, Peak Drive Rentals may override the standard policy and issue a full refund at its discretion. Supporting documentation may be required.
             </p>
           </section>
 
