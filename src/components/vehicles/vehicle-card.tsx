@@ -46,6 +46,7 @@ interface VehicleCardProps {
 
 export function VehicleCard({ vehicle, className }: VehicleCardProps) {
   const [isFavorited, setIsFavorited] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const gradient = categoryGradients[vehicle.category] || "from-gray-400 to-gray-600";
   const emoji = categoryEmoji[vehicle.category] || "🚗";
@@ -59,16 +60,27 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
       )}
     >
       <div className="relative">
-        <div
-          className={cn(
-            "flex h-48 items-center justify-center rounded-t-xl bg-gradient-to-br",
-            gradient
-          )}
-        >
-          <span className="text-6xl drop-shadow-lg" role="img" aria-label={vehicle.category}>
-            {emoji}
-          </span>
-        </div>
+        {vehicle.imageUrl && !imgError ? (
+          <div className="h-48 overflow-hidden rounded-t-xl">
+            <img
+              src={vehicle.imageUrl}
+              alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              onError={() => setImgError(true)}
+            />
+          </div>
+        ) : (
+          <div
+            className={cn(
+              "flex h-48 items-center justify-center rounded-t-xl bg-gradient-to-br",
+              gradient
+            )}
+          >
+            <span className="text-6xl drop-shadow-lg" role="img" aria-label={vehicle.category}>
+              {emoji}
+            </span>
+          </div>
+        )}
 
         <button
           type="button"

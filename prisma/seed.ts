@@ -683,6 +683,105 @@ async function main() {
     },
   ];
 
+  const vehicleImages: string[][] = [
+    // 0: Toyota Camry (Silver, economy)
+    [
+      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 1: Honda CR-V (White, SUV)
+    [
+      "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 2: Tesla Model 3 (Blue, electric)
+    [
+      "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1561580125-028ee3bd62eb?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554744512-d6c603f27c54?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 3: BMW 3 Series (Black, luxury)
+    [
+      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 4: Ford Mustang (Red, sports)
+    [
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 5: Toyota Sienna (Silver, van)
+    [
+      "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1449965408869-ebd13bc0c614?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 6: Chevrolet Equinox (White, SUV)
+    [
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583267746897-2cf415887172?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568844293986-8d0400f4e027?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 7: Mercedes-Benz E-Class (Black, luxury)
+    [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 8: Ford F-150 (White, truck)
+    [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 9: Tesla Model Y (White, electric)
+    [
+      "https://images.unsplash.com/photo-1619317190227-6703cd3ce009?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1561580125-028ee3bd62eb?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 10: Hyundai Elantra (Black, economy)
+    [
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 11: Jeep Grand Cherokee (Gray, SUV)
+    [
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583267746897-2cf415887172?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568844293986-8d0400f4e027?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 12: Honda Odyssey (Silver, family)
+    [
+      "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1449965408869-ebd13bc0c614?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 13: Chevrolet Corvette (Red, sports)
+    [
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 14: Subaru Outback (Green, SUV)
+    [
+      "https://images.unsplash.com/photo-1568844293986-8d0400f4e027?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583267746897-2cf415887172?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=80&auto=format&fit=crop",
+    ],
+    // 15: Kia Carnival (Blue, van)
+    [
+      "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1449965408869-ebd13bc0c614?w=800&q=80&auto=format&fit=crop",
+    ],
+  ];
+
   const vehicles = [];
   for (let i = 0; i < vehicleData.length; i++) {
     const v = vehicleData[i];
@@ -730,9 +829,9 @@ async function main() {
         approvedBy: v.status === "ACTIVE" ? admin.id : null,
         images: {
           create: [
-            { id: id(`vimg${i + 1}`, 1), url: "", caption: "Front view", position: 0, isPrimary: true },
-            { id: id(`vimg${i + 1}`, 2), url: "", caption: "Interior", position: 1 },
-            { id: id(`vimg${i + 1}`, 3), url: "", caption: "Side view", position: 2 },
+            { id: id(`vimg${i + 1}`, 1), url: vehicleImages[i][0], caption: "Front view", position: 0, isPrimary: true },
+            { id: id(`vimg${i + 1}`, 2), url: vehicleImages[i][1], caption: "Interior", position: 1 },
+            { id: id(`vimg${i + 1}`, 3), url: vehicleImages[i][2], caption: "Side view", position: 2 },
           ],
         },
         features: {
