@@ -40,7 +40,7 @@ const TESTIMONIALS = [
     name: "Priya R.",
     location: "Boulder, CO",
     rating: 5,
-    text: "Found a convertible for a drive through the Maroon Bells area. The fall colors were stunning! Mile High Car Rental made the whole experience effortless.",
+    text: "Found a convertible for a drive through the Maroon Bells area. The fall colors were stunning! Peak Drive Denver made the whole experience effortless.",
     trip: "Maroon Bells Scenic Drive",
   },
 ];

@@ -3,8 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How It Works | Mile High Car Rental",
-  description: "Learn how to rent a car or list your vehicle on Mile High Car Rental.",
+  title: "How It Works | Peak Drive Denver",
+  description: "Learn how to rent a car or list your vehicle on Peak Drive Denver.",
 };
 
 const renterSteps = [
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
       <section className="py-16">
         <div className="container-page">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Why Mile High Car Rental?
+            Why Peak Drive Denver?
           </h2>
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">

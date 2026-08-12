@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Mile High Car Rental",
+  title: "Privacy Policy | Peak Drive Denver",
   description:
-    "Learn how Mile High Car Rental collects, uses, and protects your personal information.",
+    "Learn how Peak Drive Denver collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
               1. Information We Collect
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              [COMPANY LEGAL NAME] ("Mile High Car Rental," "we," "us") collects
+              [COMPANY LEGAL NAME] ("Peak Drive Denver," "we," "us") collects
               information you provide directly, including your name, email
               address, phone number, date of birth, driver's license details,
               payment information, and profile data. When you list a vehicle, we
@@ -134,10 +134,10 @@ export default function PrivacyPage() {
               personal information); and the right to non-discrimination for
               exercising your privacy rights. To submit a request, email us at{" "}
               <a
-                href="mailto:privacy@milehighcars.com"
+                href="mailto:privacy@peakdriverentals.com"
                 className="text-neutral-800 hover:underline"
               >
-                privacy@milehighcars.com
+                privacy@peakdriverentals.com
               </a>{" "}
               or call our toll-free number. We will verify your identity before
               processing any request.
@@ -161,10 +161,10 @@ export default function PrivacyPage() {
               consent. You have the right to withdraw consent at any time. To
               exercise your rights, contact our Data Protection Officer at{" "}
               <a
-                href="mailto:dpo@milehighcars.com"
+                href="mailto:dpo@peakdriverentals.com"
                 className="text-neutral-800 hover:underline"
               >
-                dpo@milehighcars.com
+                dpo@peakdriverentals.com
               </a>
               . You also have the right to lodge a complaint with your local
               supervisory authority.
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
             </p>
             <p className="text-gray-600 leading-relaxed">
               For privacy-related questions or to exercise your rights, contact us at{" "}
-              <a href="mailto:privacy@milehighcars.com" className="text-neutral-800 hover:underline">privacy@milehighcars.com</a>{" "}
+              <a href="mailto:privacy@peakdriverentals.com" className="text-neutral-800 hover:underline">privacy@peakdriverentals.com</a>{" "}
               or write to: [COMPANY LEGAL NAME], Attn: Privacy Team, at our registered business address.
             </p>
           </section>

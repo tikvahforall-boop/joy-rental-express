@@ -90,7 +90,7 @@ function AnimatedLogo() {
           transitionDelay: phase === "drive-back" ? "0.4s" : "0s",
         }}
       >
-        Mile High Car Rental
+        Peak Drive Denver
       </span>
     </Link>
   );

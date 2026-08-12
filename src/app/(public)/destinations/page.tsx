@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Explore Colorado | Mile High Car Rental",
+  title: "Explore Colorado | Peak Drive Denver",
   description:
     "Discover Colorado's most loved destinations — bike trails, hiking paths, ski resorts, hot springs, scenic lookouts, and family fun.",
 };

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Mile High Car Rental",
+  title: "Cookie Policy | Peak Drive Denver",
   description:
-    "Learn about how Mile High Car Rental uses cookies and similar technologies.",
+    "Learn about how Peak Drive Denver uses cookies and similar technologies.",
 };
 
 const cookieTypes = [
@@ -176,10 +176,10 @@ export default function CookiePolicyPage() {
               If you have questions about our use of cookies, please contact us
               at{" "}
               <a
-                href="mailto:privacy@milehighcars.com"
+                href="mailto:privacy@peakdriverentals.com"
                 className="text-neutral-800 hover:underline"
               >
-                privacy@milehighcars.com
+                privacy@peakdriverentals.com
               </a>
               .
             </p>

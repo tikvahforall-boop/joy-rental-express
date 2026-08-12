@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Driver Requirements | Mile High Car Rental",
+  title: "Driver Requirements | Peak Drive Denver",
   description:
-    "Review the driver eligibility requirements for renting a vehicle on Mile High Car Rental.",
+    "Review the driver eligibility requirements for renting a vehicle on Peak Drive Denver.",
 };
 
 export default function DriverRequirementsPage() {
@@ -60,7 +60,7 @@ export default function DriverRequirementsPage() {
               Driving Record
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              Mile High Car Rental may check your driving record as part of the
+              Peak Drive Denver may check your driving record as part of the
               verification process. We use this information solely to assess
               rental eligibility and ensure platform safety. You may be
               ineligible to rent if your record includes:
@@ -99,7 +99,7 @@ export default function DriverRequirementsPage() {
               International Renters
             </h2>
             <p className="text-gray-600 leading-relaxed mb-3">
-              International visitors are welcome to rent on Mile High Car Rental.
+              International visitors are welcome to rent on Peak Drive Denver.
               If your driver's license is not issued in the United States, you
               must meet the following requirements:
             </p>
@@ -132,7 +132,7 @@ export default function DriverRequirementsPage() {
             <p className="text-gray-600 leading-relaxed">
               Only registered and approved drivers may operate a rented
               vehicle. If you plan to have an additional driver, they must
-              create a Mile High Car Rental account, meet all driver requirements,
+              create a Peak Drive Denver account, meet all driver requirements,
               complete the license verification process, and be added to the
               booking before the trip begins. An additional driver fee may
               apply. Allowing an unregistered driver to operate the vehicle
@@ -179,10 +179,10 @@ export default function DriverRequirementsPage() {
               If you have questions about driver eligibility or the
               verification process, contact our support team at{" "}
               <a
-                href="mailto:support@milehighcars.com"
+                href="mailto:support@peakdriverentals.com"
                 className="text-neutral-800 hover:underline"
               >
-                support@milehighcars.com
+                support@peakdriverentals.com
               </a>
               .
             </p>

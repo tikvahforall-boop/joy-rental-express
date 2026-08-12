@@ -2,8 +2,8 @@ import { Shield, Users, MapPin, Heart } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Mile High Car Rental",
-  description: "Learn about Mile High Car Rental and our mission to make car rental accessible to everyone.",
+  title: "About | Peak Drive Denver",
+  description: "Learn about Peak Drive Denver and our mission to make car rental accessible to everyone.",
 };
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
       <section className="bg-gradient-to-br from-neutral-800 to-black text-white py-20">
         <div className="container-page text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About Mile High Car Rental
+            About Peak Drive Denver
           </h1>
           <p className="text-lg text-neutral-100 max-w-2xl mx-auto">
             We're building the future of car rental — combining the flexibility of
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="container-page max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
-            Mile High Car Rental was founded with a simple idea: everyone deserves
+            Peak Drive Denver was founded with a simple idea: everyone deserves
             access to a great car when they need one. Whether you're traveling for
             business, going on a family road trip, or just need wheels for the
             weekend, we connect you with the right vehicle at the right price.

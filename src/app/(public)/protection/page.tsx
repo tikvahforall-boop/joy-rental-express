@@ -3,8 +3,8 @@ import { INSURANCE_TIERS } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Protection Plans | Mile High Car Rental",
-  description: "Learn about vehicle protection and insurance options available on Mile High Car Rental.",
+  title: "Protection Plans | Peak Drive Denver",
+  description: "Learn about vehicle protection and insurance options available on Peak Drive Denver.",
 };
 
 const coverageComparison = [

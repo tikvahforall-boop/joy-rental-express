@@ -92,7 +92,7 @@ export default function RegisterPage() {
           Create your account
         </h1>
         <p className="mb-6 text-center text-sm text-gray-500">
-          Join Mile High Car Rental today
+          Join Peak Drive Denver today
         </p>
 
         {error && (

@@ -32,7 +32,7 @@ export default function ContactPage() {
         <div className="container-page max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { icon: Mail, title: "Email", detail: "support@milehighcars.com", sub: "We respond within 24 hours" },
+              { icon: Mail, title: "Email", detail: "support@peakdriverentals.com", sub: "We respond within 24 hours" },
               { icon: Phone, title: "Phone", detail: "1-800-JOY-RENT", sub: "Mon-Fri, 8am-8pm EST" },
               { icon: MessageCircle, title: "Live Chat", detail: "Available in-app", sub: "24/7 for active bookings" },
             ].map((c) => (

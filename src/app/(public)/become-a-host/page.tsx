@@ -12,9 +12,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Become a Host | Mile High Car Rental",
+  title: "Become a Host | Peak Drive Denver",
   description:
-    "Turn your car into a money maker. List your vehicle on Mile High Car Rental and earn extra income.",
+    "Turn your car into a money maker. List your vehicle on Peak Drive Denver and earn extra income.",
 };
 
 const benefits = [
@@ -76,7 +76,7 @@ export default function BecomeAHostPage() {
             </h1>
             <p className="text-xl text-neutral-100 mb-8">
               Join thousands of hosts earning extra income by sharing their
-              vehicles on Mile High Car Rental. List for free and start earning.
+              vehicles on Peak Drive Denver. List for free and start earning.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -167,7 +167,7 @@ export default function BecomeAHostPage() {
           <Car className="w-16 h-16 mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl font-bold mb-4">Ready to Start Earning?</h2>
           <p className="text-neutral-100 mb-8 max-w-lg mx-auto">
-            Join the Mile High Car Rental community today. Listing is free and
+            Join the Peak Drive Denver community today. Listing is free and
             takes less than 10 minutes.
           </p>
           <Link

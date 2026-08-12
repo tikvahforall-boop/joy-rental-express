@@ -7,7 +7,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <Link href="/" className="mb-8 flex items-center gap-2">
         <Car className="h-8 w-8 text-neutral-800" />
         <span className="text-2xl font-bold text-gray-900">
-          Mile High Car Rental
+          Peak Drive Denver
         </span>
       </Link>
       {children}
