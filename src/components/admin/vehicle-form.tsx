@@ -10,12 +10,14 @@ import {
   DollarSign,
   Settings,
   Zap,
+  ImageIcon,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { ImageUploader } from "@/components/admin/image-uploader";
 
 interface VehicleData {
   id?: string;
@@ -52,6 +54,7 @@ interface VehicleData {
   instantBookEligible?: boolean;
   features?: string[];
   licensePlate?: string;
+  images?: { id: string; url: string; caption: string | null; isPrimary: boolean; position: number }[];
 }
 
 const EMPTY_VEHICLE: VehicleData = {
@@ -211,6 +214,7 @@ interface VehicleFormProps {
 export function VehicleForm({ initialData, mode }: VehicleFormProps) {
   const router = useRouter();
   const [form, setForm] = useState<VehicleData>(initialData || EMPTY_VEHICLE);
+  const [images, setImages] = useState(initialData?.images || []);
   const [vinLoading, setVinLoading] = useState(false);
   const [vinError, setVinError] = useState("");
   const [vinSuccess, setVinSuccess] = useState("");
@@ -328,7 +332,11 @@ export function VehicleForm({ initialData, mode }: VehicleFormProps) {
         return;
       }
 
-      router.push("/admin/vehicles");
+      if (mode === "create" && data.id) {
+        router.push(`/admin/vehicles/${data.id}/edit`);
+      } else {
+        router.push("/admin/vehicles");
+      }
       router.refresh();
     } catch {
       setError("Network error saving vehicle");
@@ -707,6 +715,42 @@ export function VehicleForm({ initialData, mode }: VehicleFormProps) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Photos */}
+      {mode === "edit" && form.id && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <ImageIcon className="h-5 w-5" />
+              Photos
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ImageUploader
+              vehicleId={form.id}
+              images={images}
+              onImagesChange={setImages}
+            />
+          </CardContent>
+        </Card>
+      )}
+
+      {mode === "create" && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <ImageIcon className="h-5 w-5" />
+              Photos
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+              Photos can be uploaded after creating the vehicle. You will be
+              redirected to the edit page to add images.
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Submit */}
       <div className="flex items-center justify-end gap-3">

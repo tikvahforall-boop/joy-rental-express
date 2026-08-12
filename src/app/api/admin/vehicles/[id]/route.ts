@@ -53,7 +53,18 @@ export async function PATCH(
     const vehicle = await prisma.vehicle.findUnique({ where: { id } });
     if (!vehicle) return errorResponse("Vehicle not found", 404);
 
-    const { features, ...vehicleData } = body;
+    const { features, primaryImageId, ...vehicleData } = body;
+
+    if (primaryImageId) {
+      await prisma.vehicleImage.updateMany({
+        where: { vehicleId: id },
+        data: { isPrimary: false },
+      });
+      await prisma.vehicleImage.update({
+        where: { id: primaryImageId },
+        data: { isPrimary: true },
+      });
+    }
 
     const updated = await prisma.vehicle.update({
       where: { id },
