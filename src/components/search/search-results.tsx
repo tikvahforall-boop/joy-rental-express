@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Map, LayoutGrid, ChevronLeft, ChevronRight } from "lucide-react";
+import { Map, LayoutGrid, ChevronLeft, ChevronRight, CalendarCheck } from "lucide-react";
 import { VehicleCard } from "@/components/vehicles/vehicle-card";
 import type { SearchResult } from "@/lib/services/vehicle-types";
 import { cn } from "@/lib/utils";
@@ -46,10 +47,16 @@ export function SearchResults({ result }: SearchResultsProps) {
         <h3 className="mb-2 text-xl font-semibold text-gray-900">
           No vehicles found
         </h3>
-        <p className="max-w-md text-gray-500">
-          Try adjusting your filters or searching in a different location to find
-          available vehicles.
+        <p className="max-w-md text-gray-500 mb-6">
+          Try adjusting your filters or check our full availability online.
         </p>
+        <Link
+          href="/book"
+          className="inline-flex items-center gap-2 rounded-xl bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-900 transition-colors"
+        >
+          <CalendarCheck className="h-4 w-4" />
+          Check Availability
+        </Link>
       </div>
     );
   }

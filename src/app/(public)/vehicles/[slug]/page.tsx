@@ -170,105 +170,28 @@ function ImageGallery({ images }: { images: Vehicle["images"] }) {
 }
 
 function BookingWidget({ vehicle }: { vehicle: Vehicle }) {
-  const [pickupDate, setPickupDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-
-  const today = new Date().toISOString().split("T")[0];
-
-  const numDays =
-    pickupDate && returnDate
-      ? Math.ceil(
-          (new Date(returnDate).getTime() - new Date(pickupDate).getTime()) /
-            (1000 * 60 * 60 * 24)
-        )
-      : 0;
-
-  const subtotal = numDays * vehicle.dailyPrice;
-  const serviceFee = subtotal * 0.1;
-  const total = subtotal + serviceFee + (vehicle.cleaningFee ?? 0);
-
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg sticky top-24">
-      <div className="flex items-baseline gap-1 mb-6">
+      <div className="flex items-baseline gap-1 mb-4">
         <span className="text-3xl font-bold text-gray-900">
           {formatCurrency(vehicle.dailyPrice)}
         </span>
         <span className="text-gray-500">/day</span>
       </div>
 
-      <div className="space-y-3 mb-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Trip start
-          </label>
-          <input
-            type="date"
-            value={pickupDate}
-            min={today}
-            onChange={(e) => setPickupDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Trip end
-          </label>
-          <input
-            type="date"
-            value={returnDate}
-            min={pickupDate || today}
-            onChange={(e) => setReturnDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 outline-none"
-          />
-        </div>
-      </div>
-
-      {numDays > 0 && (
-        <div className="border-t border-gray-100 pt-4 mb-4 space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span className="text-gray-600">
-              {formatCurrency(vehicle.dailyPrice)} x {numDays} day
-              {numDays > 1 ? "s" : ""}
-            </span>
-            <span>{formatCurrency(subtotal)}</span>
-          </div>
-          {vehicle.cleaningFee ? (
-            <div className="flex justify-between">
-              <span className="text-gray-600">Cleaning fee</span>
-              <span>{formatCurrency(vehicle.cleaningFee)}</span>
-            </div>
-          ) : null}
-          <div className="flex justify-between">
-            <span className="text-gray-600">Service fee</span>
-            <span>{formatCurrency(serviceFee)}</span>
-          </div>
-          <div className="flex justify-between font-semibold text-base pt-2 border-t border-gray-100">
-            <span>Total</span>
-            <span>{formatCurrency(total)}</span>
-          </div>
-        </div>
-      )}
+      <p className="text-sm text-gray-600 mb-6">
+        Select your dates and complete your booking through our secure reservation system.
+      </p>
 
       <Link
-        href={
-          pickupDate && returnDate
-            ? `/booking/new?vehicleId=${vehicle.id}&pickupDate=${pickupDate}&returnDate=${returnDate}`
-            : "#"
-        }
-        className={cn(
-          "block w-full text-center py-3 rounded-xl font-semibold text-white transition-colors",
-          pickupDate && returnDate
-            ? "bg-neutral-800 hover:bg-neutral-900"
-            : "bg-gray-300 cursor-not-allowed"
-        )}
+        href="/book"
+        className="block w-full text-center py-3 rounded-xl font-semibold text-white bg-neutral-800 hover:bg-neutral-900 transition-colors"
       >
-        {vehicle.bookingMode === "INSTANT" ? "Book Instantly" : "Request to Book"}
+        Book Now
       </Link>
 
       <p className="text-xs text-gray-500 text-center mt-3">
-        {vehicle.bookingMode === "INSTANT"
-          ? "Instant confirmation"
-          : "Host will respond within 24 hours"}
+        Instant confirmation &middot; Free cancellation within 24h
       </p>
     </div>
   );
@@ -692,12 +615,10 @@ export default function VehicleDetailPage() {
             <span className="text-gray-500 text-sm"> /day</span>
           </div>
           <Link
-            href={`/booking/new?vehicleId=${vehicle.id}`}
+            href="/book"
             className="bg-neutral-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-neutral-900 transition-colors"
           >
-            {vehicle.bookingMode === "INSTANT"
-              ? "Book Instantly"
-              : "Request to Book"}
+            Book Now
           </Link>
         </div>
       </div>

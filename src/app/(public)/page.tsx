@@ -13,6 +13,7 @@ import {
   Mountain,
   MapPin,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { APP_NAME, VEHICLE_CATEGORIES } from "@/lib/constants";
 import { getFeaturedVehicles } from "@/lib/services/vehicle-service";
 import { VehicleCard } from "@/components/vehicles/vehicle-card";
@@ -152,25 +153,36 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Popular Cars */}
-      <section className="px-4 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Popular Cars Near You</h2>
-            <Link
-              href="/search"
-              className="text-sm font-medium text-neutral-800 hover:text-neutral-900"
-            >
-              View all
-            </Link>
+      {/* Our Fleet */}
+      {featuredVehicles.length > 0 && (
+        <section className="px-4 py-12 md:py-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-gray-900">Our Fleet</h2>
+              <Link
+                href="/book"
+                className="text-sm font-medium text-neutral-800 hover:text-neutral-900"
+              >
+                Book online
+              </Link>
+            </div>
+            <div className={cn(
+              "grid gap-4",
+              featuredVehicles.length === 1
+                ? "grid-cols-1 max-w-sm mx-auto"
+                : featuredVehicles.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto"
+                  : featuredVehicles.length === 3
+                    ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                    : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            )}>
+              {featuredVehicles.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredVehicles.map((vehicle) => (
-              <VehicleCard key={vehicle.id} vehicle={vehicle} />
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Scenic Road Trips Banner */}
       <section className="relative overflow-hidden">
@@ -346,23 +358,23 @@ export default async function HomePage() {
               Find the perfect ride for your next mountain adventure. Book today and hit the open road.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/search">
+              <Link href="/book">
                 <Button
                   size="lg"
                   className="bg-white text-neutral-800 hover:bg-neutral-50"
                 >
-                  <Search className="mr-2 h-4 w-4" />
-                  Browse Cars
+                  <CalendarCheck className="mr-2 h-4 w-4" />
+                  Book Now
                 </Button>
               </Link>
-              <Link href="/book">
+              <Link href="/search">
                 <Button
                   variant="outline"
                   size="lg"
                   className="border-white text-white hover:bg-white/10"
                 >
-                  <CalendarCheck className="mr-2 h-4 w-4" />
-                  Book Now
+                  <Search className="mr-2 h-4 w-4" />
+                  Browse Fleet
                 </Button>
               </Link>
             </div>
