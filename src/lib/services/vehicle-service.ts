@@ -88,7 +88,7 @@ export async function searchVehicles(filters: SearchFilters): Promise<SearchResu
     prisma.vehicle.findMany({
       where,
       include: {
-        images: { where: { isPrimary: true }, take: 1 },
+        images: { orderBy: [{ isPrimary: "desc" }, { position: "asc" }], take: 1 },
         features: { select: { name: true } },
         host: {
           select: { name: true, firstName: true, lastName: true, avatarUrl: true },
@@ -123,7 +123,7 @@ export async function searchVehicles(filters: SearchFilters): Promise<SearchResu
       ? `${v.host.firstName} ${(v.host.lastName ?? "").charAt(0)}.`
       : v.host.name ?? "Host",
     hostAvatar: v.host.avatarUrl,
-    imageUrl: v.images[0]?.url ?? null,
+    imageUrl: v.images[0]?.url || null,
   }));
 
   return {

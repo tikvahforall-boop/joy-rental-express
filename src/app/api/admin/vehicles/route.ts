@@ -50,6 +50,11 @@ export async function GET(request: NextRequest) {
               firstName: true,
             },
           },
+          images: {
+            orderBy: [{ isPrimary: "desc" as const }, { position: "asc" as const }],
+            take: 1,
+            select: { url: true },
+          },
         },
         orderBy: { createdAt: "desc" },
         skip: (page - 1) * limit,
@@ -60,6 +65,8 @@ export async function GET(request: NextRequest) {
 
     const formatted = vehicles.map((v: typeof vehicles[number]) => ({
       ...v,
+      imageUrl: v.images[0]?.url || null,
+      images: undefined,
       host: {
         id: v.host.id,
         name: v.host.name || v.host.firstName || "Unknown",
@@ -116,6 +123,29 @@ export async function PATCH(request: NextRequest) {
       return successResponse(updated);
     }
 
+    if (action === "activate") {
+      if (vehicle.status !== "INACTIVE" && vehicle.status !== "SUSPENDED") {
+        return errorResponse("Only inactive or suspended vehicles can be activated", 400);
+      }
+
+      const updated = await prisma.vehicle.update({
+        where: { id },
+        data: { status: "ACTIVE", suspendedReason: null },
+      });
+
+      await prisma.auditLog.create({
+        data: {
+          userId: adminId,
+          action: "ACTIVATE_VEHICLE",
+          entity: "Vehicle",
+          entityId: id,
+          details: { make: vehicle.make, model: vehicle.model },
+        },
+      });
+
+      return successResponse(updated);
+    }
+
     if (action === "suspend") {
       const updated = await prisma.vehicle.update({
         where: { id },
@@ -129,6 +159,32 @@ export async function PATCH(request: NextRequest) {
         data: {
           userId: adminId,
           action: "SUSPEND_VEHICLE",
+          entity: "Vehicle",
+          entityId: id,
+          details: {
+            reason: body.reason || null,
+            make: vehicle.make,
+            model: vehicle.model,
+          },
+        },
+      });
+
+      return successResponse(updated);
+    }
+
+    if (action === "deactivate") {
+      const updated = await prisma.vehicle.update({
+        where: { id },
+        data: {
+          status: "INACTIVE",
+          suspendedReason: body.reason || null,
+        },
+      });
+
+      await prisma.auditLog.create({
+        data: {
+          userId: adminId,
+          action: "DEACTIVATE_VEHICLE",
           entity: "Vehicle",
           entityId: id,
           details: {

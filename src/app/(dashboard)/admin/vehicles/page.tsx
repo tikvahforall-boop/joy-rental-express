@@ -32,11 +32,23 @@ interface Vehicle {
   avgRating: number | null;
   category: string;
   slug: string;
+  imageUrl: string | null;
   host: {
     id: string;
     name: string;
   };
 }
+
+const categoryEmoji: Record<string, string> = {
+  economy: "🚗",
+  suv: "🚙",
+  luxury: "✨",
+  electric: "⚡",
+  sports: "🏎️",
+  van: "🚐",
+  truck: "🛻",
+  family: "👨‍👩‍👧‍👦",
+};
 
 interface Pagination {
   page: number;
@@ -147,7 +159,7 @@ export default function AdminVehiclesPage() {
     }
   }, [isAdmin, fetchVehicles]);
 
-  const handleAction = async (vehicleId: string, action: "approve" | "suspend") => {
+  const handleAction = async (vehicleId: string, action: "approve" | "suspend" | "activate") => {
     setActionLoadingId(vehicleId);
     try {
       await fetch("/api/admin/vehicles", {
@@ -280,8 +292,23 @@ export default function AdminVehiclesPage() {
                 ) : (
                   vehicles.map((vehicle) => (
                     <tr key={vehicle.id} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
-                        {vehicle.year} {vehicle.make} {vehicle.model}
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-3">
+                          {vehicle.imageUrl ? (
+                            <img
+                              src={vehicle.imageUrl}
+                              alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
+                              className="h-10 w-14 rounded object-cover shrink-0"
+                            />
+                          ) : (
+                            <div className="flex h-10 w-14 items-center justify-center rounded bg-gray-100 text-lg shrink-0">
+                              {categoryEmoji[vehicle.category.toLowerCase()] || "🚗"}
+                            </div>
+                          )}
+                          <span className="font-medium text-gray-900 whitespace-nowrap">
+                            {vehicle.year} {vehicle.make} {vehicle.model}
+                          </span>
+                        </div>
                       </td>
                       <td className="px-4 py-3 text-gray-600 whitespace-nowrap">
                         {vehicle.host.name}
@@ -340,6 +367,15 @@ export default function AdminVehiclesPage() {
                               onClick={() => handleAction(vehicle.id, "suspend")}
                             >
                               Suspend
+                            </Button>
+                          )}
+                          {(vehicle.status === "INACTIVE" || vehicle.status === "SUSPENDED") && (
+                            <Button
+                              size="sm"
+                              loading={actionLoadingId === vehicle.id}
+                              onClick={() => handleAction(vehicle.id, "activate")}
+                            >
+                              Activate
                             </Button>
                           )}
                           <Button

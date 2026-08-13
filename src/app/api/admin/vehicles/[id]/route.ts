@@ -20,6 +20,13 @@ export async function GET(
       include: {
         images: { orderBy: { position: "asc" } },
         features: true,
+        availability: {
+          where: { isBlocked: true },
+          orderBy: { startDate: "asc" },
+        },
+        pricingRules: {
+          orderBy: { startDate: "asc" },
+        },
         host: {
           select: {
             id: true,

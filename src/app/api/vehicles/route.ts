@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
       prisma.vehicle.findMany({
         where,
         include: {
-          images: { where: { isPrimary: true }, take: 1 },
+          images: { orderBy: [{ isPrimary: "desc" }, { position: "asc" }], take: 1 },
           features: true,
           host: { select: { id: true, name: true, avatarUrl: true } },
         },

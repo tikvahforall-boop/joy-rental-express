@@ -72,6 +72,21 @@ export const vehicleCreateSchema = z.object({
   features: z.array(z.string()).optional(),
 });
 
+export const vehicleAvailabilitySchema = z.object({
+  startDate: z.string(),
+  endDate: z.string(),
+  isBlocked: z.boolean().default(true),
+  reason: z.string().max(500).optional(),
+});
+
+export const vehiclePricingRuleSchema = z.object({
+  name: z.string().min(1, "Name is required").max(100),
+  type: z.enum(["percentage_discount", "percentage_increase", "fixed_amount"]),
+  value: z.number().positive("Value must be positive"),
+  startDate: z.string(),
+  endDate: z.string(),
+});
+
 export const bookingCreateSchema = z.object({
   vehicleId: z.string().min(1),
   pickupDate: z.string().datetime(),
