@@ -20,7 +20,8 @@ import { getInitials } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/search", label: "Search Cars" },
-  { href: "/destinations", label: "Destinations" },
+  { href: "/long-term-rentals", label: "Long-Term" },
+  { href: "/rent-to-own", label: "Rent to Own" },
   { href: "/book", label: "Book Online" },
   { href: "/how-it-works", label: "How it Works" },
   { href: "/about", label: "About" },

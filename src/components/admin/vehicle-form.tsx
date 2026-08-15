@@ -11,6 +11,7 @@ import {
   Settings,
   Zap,
   ImageIcon,
+  TrendingUp,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -54,6 +55,14 @@ interface VehicleData {
   instantBookEligible?: boolean;
   features?: string[];
   licensePlate?: string;
+  longTermAvailable?: boolean;
+  rentToOwnAvailable?: boolean;
+  weeklyPrice?: number;
+  monthlyPrice?: number;
+  purchasePrice?: number;
+  rtoDownPayment?: number;
+  rtoMonthlyPayment?: number;
+  rtoTermMonths?: number;
   images?: { id: string; url: string; caption: string | null; isPrimary: boolean; position: number }[];
 }
 
@@ -91,6 +100,14 @@ const EMPTY_VEHICLE: VehicleData = {
   instantBookEligible: true,
   features: [],
   licensePlate: "",
+  longTermAvailable: false,
+  rentToOwnAvailable: false,
+  weeklyPrice: undefined,
+  monthlyPrice: undefined,
+  purchasePrice: undefined,
+  rtoDownPayment: undefined,
+  rtoMonthlyPayment: undefined,
+  rtoTermMonths: undefined,
 };
 
 const CATEGORIES = [
@@ -312,6 +329,14 @@ export function VehicleForm({ initialData, mode }: VehicleFormProps) {
         maxTripDays: Number(form.maxTripDays),
         deliveryRadius: form.deliveryRadius ? Number(form.deliveryRadius) : undefined,
         drivetrain: form.drivetrain || undefined,
+        longTermAvailable: form.longTermAvailable || false,
+        rentToOwnAvailable: form.rentToOwnAvailable || false,
+        weeklyPrice: form.weeklyPrice ? Number(form.weeklyPrice) : undefined,
+        monthlyPrice: form.monthlyPrice ? Number(form.monthlyPrice) : undefined,
+        purchasePrice: form.purchasePrice ? Number(form.purchasePrice) : undefined,
+        rtoDownPayment: form.rtoDownPayment ? Number(form.rtoDownPayment) : undefined,
+        rtoMonthlyPayment: form.rtoMonthlyPayment ? Number(form.rtoMonthlyPayment) : undefined,
+        rtoTermMonths: form.rtoTermMonths ? Number(form.rtoTermMonths) : undefined,
       };
 
       const url =
@@ -686,6 +711,107 @@ export function VehicleForm({ initialData, mode }: VehicleFormProps) {
                 onChange={(e) => updateField("deliveryRadius", e.target.value)}
                 placeholder="25"
               />
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Rental Programs */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <TrendingUp className="h-5 w-5" />
+            Rental Programs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          <div className="flex flex-wrap gap-6">
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={form.longTermAvailable || false}
+                onChange={(e) => updateField("longTermAvailable", e.target.checked)}
+                className="h-4 w-4 rounded border-gray-300"
+              />
+              Available for Long-Term Rental
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={form.rentToOwnAvailable || false}
+                onChange={(e) => updateField("rentToOwnAvailable", e.target.checked)}
+                className="h-4 w-4 rounded border-gray-300"
+              />
+              Available for Rent-to-Own
+            </label>
+          </div>
+
+          {form.longTermAvailable && (
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+              <p className="mb-3 text-sm font-medium text-blue-800">Long-Term Pricing</p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Input
+                  label="Weekly Price ($)"
+                  type="number"
+                  value={form.weeklyPrice || ""}
+                  onChange={(e) => updateField("weeklyPrice", e.target.value)}
+                  placeholder="e.g. 350"
+                  min={0}
+                  step="0.01"
+                />
+                <Input
+                  label="Monthly Price ($)"
+                  type="number"
+                  value={form.monthlyPrice || ""}
+                  onChange={(e) => updateField("monthlyPrice", e.target.value)}
+                  placeholder="e.g. 1200"
+                  min={0}
+                  step="0.01"
+                />
+              </div>
+            </div>
+          )}
+
+          {form.rentToOwnAvailable && (
+            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+              <p className="mb-3 text-sm font-medium text-green-800">Rent-to-Own Terms</p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Input
+                  label="Purchase Price ($)"
+                  type="number"
+                  value={form.purchasePrice || ""}
+                  onChange={(e) => updateField("purchasePrice", e.target.value)}
+                  placeholder="e.g. 15000"
+                  min={0}
+                  step="0.01"
+                />
+                <Input
+                  label="Down Payment ($)"
+                  type="number"
+                  value={form.rtoDownPayment || ""}
+                  onChange={(e) => updateField("rtoDownPayment", e.target.value)}
+                  placeholder="e.g. 2000"
+                  min={0}
+                  step="0.01"
+                />
+                <Input
+                  label="Monthly Payment ($)"
+                  type="number"
+                  value={form.rtoMonthlyPayment || ""}
+                  onChange={(e) => updateField("rtoMonthlyPayment", e.target.value)}
+                  placeholder="e.g. 450"
+                  min={0}
+                  step="0.01"
+                />
+                <Input
+                  label="Term Length (months)"
+                  type="number"
+                  value={form.rtoTermMonths || ""}
+                  onChange={(e) => updateField("rtoTermMonths", e.target.value)}
+                  placeholder="e.g. 36"
+                  min={1}
+                />
+              </div>
             </div>
           )}
         </CardContent>

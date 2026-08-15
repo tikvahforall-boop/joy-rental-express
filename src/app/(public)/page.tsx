@@ -12,6 +12,9 @@ import {
   Star,
   Mountain,
   MapPin,
+  Clock,
+  TrendingUp,
+  ArrowRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_NAME, VEHICLE_CATEGORIES } from "@/lib/constants";
@@ -183,6 +186,50 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Rental Programs */}
+      <section className="bg-gray-50 px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-3 text-center text-2xl font-bold text-gray-900 md:text-3xl">
+            Flexible Rental Programs
+          </h2>
+          <p className="mb-10 text-center text-gray-500">
+            Beyond daily rentals — options that fit your lifestyle
+          </p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Link
+              href="/long-term-rentals"
+              className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+            >
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+                <Clock className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-gray-900">Long-Term Rentals</h3>
+              <p className="mb-4 text-sm leading-relaxed text-gray-500">
+                Save up to 40% with weekly and monthly rates. Perfect for extended stays, relocations, and corporate needs.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 group-hover:gap-2 transition-all">
+                Learn More <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+            <Link
+              href="/rent-to-own"
+              className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+            >
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-700">
+                <TrendingUp className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-gray-900">Rent to Own</h3>
+              <p className="mb-4 text-sm leading-relaxed text-gray-500">
+                Drive now, own later. Make affordable monthly payments toward vehicle ownership — no traditional credit check required.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-green-700 group-hover:gap-2 transition-all">
+                Learn More <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Scenic Road Trips Banner */}
       <section className="relative overflow-hidden">

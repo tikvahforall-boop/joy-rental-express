@@ -70,6 +70,8 @@ export async function PATCH(
       "cleaningFee", "deliveryFee", "dailyMileageLimit", "extraMileCharge",
       "bookingMode", "minTripDays", "maxTripDays", "instantBookEligible",
       "deliveryEnabled", "deliveryRadius",
+      "longTermAvailable", "rentToOwnAvailable", "weeklyPrice", "monthlyPrice",
+      "purchasePrice", "rtoDownPayment", "rtoMonthlyPayment", "rtoTermMonths",
     ];
     const vehicleData: Record<string, unknown> = {};
     for (const key of allowedFields) {

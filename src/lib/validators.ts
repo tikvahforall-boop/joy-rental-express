@@ -70,6 +70,14 @@ export const vehicleCreateSchema = z.object({
   deliveryEnabled: z.boolean().default(false),
   deliveryRadius: z.number().int().optional(),
   features: z.array(z.string()).optional(),
+  longTermAvailable: z.boolean().default(false),
+  rentToOwnAvailable: z.boolean().default(false),
+  weeklyPrice: z.number().min(0).optional(),
+  monthlyPrice: z.number().min(0).optional(),
+  purchasePrice: z.number().min(0).optional(),
+  rtoDownPayment: z.number().min(0).optional(),
+  rtoMonthlyPayment: z.number().min(0).optional(),
+  rtoTermMonths: z.number().int().min(1).optional(),
 });
 
 export const vehicleAvailabilitySchema = z.object({

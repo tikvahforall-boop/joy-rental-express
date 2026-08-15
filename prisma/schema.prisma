@@ -345,6 +345,16 @@ model Vehicle {
   // Company-owned flag for hybrid model
   isCompanyOwned  Boolean       @default(false)
 
+  // Rental programs
+  longTermAvailable   Boolean   @default(false)
+  rentToOwnAvailable  Boolean   @default(false)
+  weeklyPrice         Float?
+  monthlyPrice        Float?
+  purchasePrice       Float?
+  rtoDownPayment      Float?
+  rtoMonthlyPayment   Float?
+  rtoTermMonths       Int?
+
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 
